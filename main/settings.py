@@ -32,7 +32,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
+ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com' , '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
 
 
 # Application definition
