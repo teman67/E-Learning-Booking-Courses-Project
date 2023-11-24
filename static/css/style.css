@@ -43,19 +43,8 @@ main {
     background-color: var(--white);
 }
 
-/* Footer */
-footer {
-    flex-shrink: 0;
-    background-color: var(--off-white);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-top: var(--border);
-}
-
 .social-icon {
-    height: 2rem;
+    height: 1.7rem;
     margin: 1rem;
 }
 
@@ -72,4 +61,15 @@ a.nav-link {
 img.logo {
     width: 14rem;
     height: 8rem;
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: var(--off-white);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: var(--border);
 }

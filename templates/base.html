@@ -30,6 +30,7 @@
   </head>
   <body>
     {%include 'navbar.html'%}
-    <h1>Hello!</h1>
+    <main>{%block content%} {%endblock%}</main>
+    {%include 'footer.html'%}
   </body>
 </html>
