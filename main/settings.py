@@ -18,7 +18,7 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR=os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +32,10 @@ DEBUG = "DEVELOPMENT" in os.environ
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com' , '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com',
+                 '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
 
 
 # Application definition
@@ -135,7 +138,7 @@ USE_TZ = True
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
- 
+
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
