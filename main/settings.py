@@ -32,8 +32,6 @@ DEBUG = "DEVELOPMENT" in os.environ
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
 ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com',
                  '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
 
@@ -46,11 +44,19 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'courses',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +66,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 ROOT_URLCONF = 'main.urls'
 
@@ -68,7 +78,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates' , 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -78,8 +89,21 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins':[
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'main.wsgi.application'
@@ -131,6 +155,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Account Setup
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_USERNAME_MIN_LENGTH = 5
+LOGIN_URL='/templates/login'
+LOGIN_REDIRECT_URL='/'
 
 
 # Static files (CSS, JavaScript, Images)

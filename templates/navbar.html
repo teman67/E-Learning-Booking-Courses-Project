@@ -1,6 +1,7 @@
 {%load static%}
 
 <header>
+  {%with requuest.resolver_match.url_name as url_name%}
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"
@@ -24,7 +25,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a
-              class="nav-link active"
+              class="nav-link {%if url_name == 'home'%}active{%endif%}"
               aria-current="page"
               href="{%url 'home' %}"
               >Home</a
@@ -33,30 +34,30 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item dropdown">
+          {%if request.user.is_authenticated%}
+          <li class="nav-item">
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              class="nav-link {%if url_name == 'accounts_logout'%}active{%endif%}"
+              href="/account/logout"
+              >Logout</a
             >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
+          </li>
+          {%else%}
+          <li class="nav-item">
+            <a
+              class="nav-link {%if url_name == 'accounts_login'%}active{%endif%}"
+              href="/templates/login"
+              >Login</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a
+              class="nav-link {%if url_name == 'accounts_signup'%}active{%endif%}"
+              href="/templates/signup"
+              >Registration</a
+            >
           </li>
+          {%endif%}
         </ul>
         <form class="d-flex" role="search">
           <input
@@ -70,4 +71,5 @@
       </div>
     </div>
   </nav>
+  {%endwith%}
 </header>

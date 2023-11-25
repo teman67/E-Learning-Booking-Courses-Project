@@ -63,6 +63,20 @@ img.logo {
     height: 8rem;
 }
 
+.active {
+    border-bottom: 2px solid var(--blue);
+    font-weight: 500;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--smal-box-shadow);
+    border-radius: 5px;
+}
+
 /* Footer */
 footer {
     flex-shrink: 0;
