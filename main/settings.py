@@ -34,6 +34,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com',
                  '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost']
+                 
+CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "https://8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com"]
 
 
 # Application definition
@@ -158,7 +160,7 @@ USE_TZ = True
 
 # Account Setup
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = 'none'
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 5
