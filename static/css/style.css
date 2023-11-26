@@ -71,7 +71,7 @@ img.logo {
 /* Form */
 
 .form {
-    width: 100%;
+    width: 70%;
     margin: 3% auto;
     box-shadow: var(--smal-box-shadow);
     border-radius: 5px;
