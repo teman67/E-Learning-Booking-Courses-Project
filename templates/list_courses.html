@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Featured Courses</h2>
+
+  <div class="row">
+    {% for i in "0123456789" %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img
+          src="{% static 'images/image_courses/' %}{{ i }}.jpg"
+          class="card-img-top"
+          alt="Course {{ i }} Image"
+          style="width: 90%; height: 15rem"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Course {{ i }}</h5>
+          <p class="card-text">Description of Course {{ i }}.</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
