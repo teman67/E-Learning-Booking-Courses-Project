@@ -4,57 +4,68 @@
 <h1>Booking Page</h1>
 
 <p>
-    Fill out the form below to make a booking. You can select up to three courses. Hold the Control key to select
-    multiple courses:
+  Fill out the form below to make a booking. You can select up to three courses.
+  <b> Hold the Control key </b> to select multiple courses:
 </p>
 
-<form method="post" action="{% url 'booking' %}" onsubmit="return validateForm()">
-    {% csrf_token %}
+<form
+  method="post"
+  action="{% url 'booking' %}"
+  onsubmit="return validateForm()"
+>
+  {% csrf_token %}
 
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required />
+  <label for="first_name">First Name:</label>
+  <input type="text" id="first_name" name="first_name" required />
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required />
+  <label for="last_name">Last Name:</label>
+  <input type="text" id="last_name" name="last_name" required />
 
-    <label for="courses">Select Courses (up to 3):</label>
-    <select id="courses" name="courses" multiple size="5" required onchange="updateSelectionCount()">
-        {% with '1 2 3 4 5 6 7 8 9 10' as course_list %}
-        {% for i in course_list.split %}
-        <option value="{{ i }}">Course {{ i }}</option>
-        {% endfor %}
-        {% endwith %}
-    </select>
-    <span id="selectionCount">0</span>/3 courses selected
-    <button type="submit">Submit Booking</button>
+  <label for="courses">Select Courses (up to 3):</label>
+  <select
+    id="courses"
+    name="courses"
+    multiple
+    size="5"
+    required
+    onchange="updateSelectionCount()"
+  >
+    {% with '1 2 3 4 5 6 7 8 9 10' as course_list %}
+    {% for i in course_list.split %}
+    <option value="{{ i }}">Course {{ i }}</option>
+    {% endfor %} 
+    {% endwith %}
+  </select>
+  <span id="selectionCount">0</span>/3 courses selected
+  <button type="submit">Submit Booking</button>
 </form>
 
 <script>
-    var selectedCourses = [];
+  var selectedCourses = [];
 
-    function updateSelectionCount() {
-        var selectElement = document.getElementById('courses');
-        var countElement = document.getElementById('selectionCount');
-        var selectedCount = 0;
+  function updateSelectionCount() {
+    var selectElement = document.getElementById("courses");
+    var countElement = document.getElementById("selectionCount");
+    var selectedCount = 0;
 
-        selectedCourses = [];
-        for (var i = 0; i < selectElement.options.length; i++) {
-            if (selectElement.options[i].selected) {
-                selectedCount++;
-                selectedCourses.push(selectElement.options[i].value);
-            }
-        }
-
-        countElement.innerHTML = selectedCount;
+    selectedCourses = [];
+    for (var i = 0; i < selectElement.options.length; i++) {
+      if (selectElement.options[i].selected) {
+        selectedCount++;
+        selectedCourses.push(selectElement.options[i].value);
+      }
     }
 
-    function validateForm() {
-        if (selectedCourses.length > 3) {
-            alert('You can select up to 3 courses.');
-            return false;
-        }
-        return true;
+    countElement.innerHTML = selectedCount;
+  }
+
+  function validateForm() {
+    if (selectedCourses.length > 3) {
+      alert("You can select up to 3 courses.");
+      return false;
     }
+    return true;
+  }
 </script>
 
 {% endblock %}
