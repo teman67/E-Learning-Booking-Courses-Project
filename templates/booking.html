@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<body>
+  <h1>Booking Page</h1>
+
+  <p>Fill out the form below to make a booking:</p>
+
+  <form method="post" action="{% url 'booking' %}">
+    {% csrf_token %}
+    <!-- Your form fields go here -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required />
+
+    <button type="submit">Submit Booking</button>
+  </form>
+</body>
+
+{% endblock %}
