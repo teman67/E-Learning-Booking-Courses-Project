@@ -1,0 +1,13 @@
+<!-- courses/course_detail.html -->
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h2>{{ course.title }}</h2>
+  <img
+    src="{{ course.image.url }}"
+    alt="{{ course.title }}"
+    class="img-fluid"
+  />
+  <p>{{ course.description }}</p>
+  <!-- Add any other course details you want to display -->
+</div>
+{% endblock %}

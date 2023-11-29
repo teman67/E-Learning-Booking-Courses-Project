@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Featured Courses</h2>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{% static 'images/image_courses/' %}{{ course.id }}.jpg" class="card-img-top"
+                    alt="{{ course.title }} Image" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -56,9 +56,12 @@ main {
 .row img {
     width: 100%;
     height: 15rem;
-
-
 }
+
+/* .row a {
+    text-align: center;
+
+} */
 
 /* Header */
 .navbar {
