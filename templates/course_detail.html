@@ -1,13 +1,20 @@
-<!-- courses/course_detail.html -->
+<!-- course_details.html -->
+
 {% extends 'base.html' %} {% block content %}
+
 <div class="container mt-5">
-  <h2>{{ course.title }}</h2>
-  <img
-    src="{{ course.image.url }}"
-    alt="{{ course.title }}"
-    class="img-fluid"
-  />
-  <p>{{ course.description }}</p>
-  <!-- Add any other course details you want to display -->
+  <h2 class="mb-4">Course Details</h2>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Course {{ course_id|add:1 }}</h3>
+      <p>{{ description }}</p>
+      <!-- Add any other details you want to display -->
+
+      <!-- Add a link to go back to the previous page -->
+      <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

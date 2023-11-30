@@ -4,7 +4,7 @@
   <h2 class="mb-4">Featured Courses</h2>
 
   <div class="row">
-    {% with '0 1 2 3 4 5 6 7 8 9' as course_list %}
+    {% with '0 1 2 3 4 5 6 7 8 9' as course_list %} 
     {% for i in course_list.split %}
     <div class="col-md-4 mb-4">
       <div class="card">
@@ -17,11 +17,15 @@
         <div class="card-body">
           <h5 class="card-title">Course {{ i|add:1 }}</h5>
           <p class="card-text">{{ descriptions.i }}</p>
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>        
+          <a
+            href="{% url 'course_detail' course_id=i %}"
+            class="btn btn-primary"
+            >Learn More</a
+          >
+        </div>
       </div>
     </div>
-    {% endfor %}
+    {% endfor %} 
     {% endwith %}
   </div>
   <!-- <div class="row">
