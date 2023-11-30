@@ -15,8 +15,29 @@
           style="width: 90%; height: 15rem"
         />
         <div class="card-body">
-          <h5 class="card-title">Course {{ i|add:1 }}</h5>
-          <p class="card-text">{{ descriptions.i }}</p>
+            {% if i == '0' %}
+                <h5 class="card-title">Django with React | An Ecommerce Website</h5>
+            {% elif i == '1' %}
+                <h5 class="card-title">Learn Ethical Hacking From Scratch</h5>
+            {% elif i == '2' %}
+            <h5 class="card-title">The Complete Networking Fundamentals Course. Your CCNA start</h5>
+            {% elif i == '3' %}
+            <h5 class="card-title">The Complete Python Bootcamp From Zero to Hero in Python</h5>
+            {% elif i == '4' %}
+            <h5 class="card-title">Machine Learning A-Z™: AI, Python & R</h5>
+            {% elif i == '5' %}
+            <h5 class="card-title">The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert</h5>
+            {% elif i == '6' %}
+            <h5 class="card-title">Machine Learning for Absolute Beginners - Level 1</h5>
+            {% elif i == '7' %}
+            <h5 class="card-title">The Git & Github Bootcamp</h5>
+            {% elif i == '8' %}
+            <h5 class="card-title">230+ Exercises - Python for Data Science - NumPy + Pandas</h5>
+            {% elif i == '9' %}
+            <h5 class="card-title">AngularJS Crash Course for Beginners</h5>
+            {% endif %}
+          <!-- <p class="card-text">{{ descriptions.i }}</p> -->
+          <br>
           <a
             href="{% url 'course_detail' course_id=i %}"
             class="btn btn-primary"
@@ -25,7 +46,7 @@
         </div>
       </div>
     </div>
-    {% endfor %} 
+    {% endfor %}
     {% endwith %}
   </div>
   <!-- <div class="row">
