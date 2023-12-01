@@ -1,1 +1,74 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-12 text-white"
+      style="
+        background-image: url('{% static 'images/home_2.png' %}');
+        background-size: cover;
+        padding: 100px;
+      "
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Adjusted offset to 1 -->
+          <div
+            style="
+              padding: 5px;
+              background-color: rgba(0, 0, 0, 0.6);
+              width: 100%;
+              line-height: 2.3;
+              text-align: left;
+            "
+          >
+            <h1>Explore Exciting Online Courses</h1>
+            <p>Enhance your skills with our diverse range of online courses:</p>
+
+            <ul>
+              <li><strong>Django with React | An Ecommerce Website</strong></li>
+              <li><strong>Learn Ethical Hacking From Scratch</strong></li>
+              <li>
+                <strong
+                  >The Complete Networking Fundamentals Course. Your CCNA
+                  start</strong
+                >
+              </li>
+              <li>
+                <strong
+                  >The Complete Python Bootcamp From Zero to Hero in
+                  Python</strong
+                >
+              </li>
+              <li><strong>Machine Learning A-Z™: AI, Python & R</strong></li>
+              <li>
+                <strong
+                  >The Ultimate MySQL Bootcamp: Go from SQL Beginner to
+                  Expert</strong
+                >
+              </li>
+              <li>
+                <strong
+                  >Machine Learning for Absolute Beginners - Level 1</strong
+                >
+              </li>
+              <li><strong>The Git & Github Bootcamp</strong></li>
+              <li>
+                <strong
+                  >230+ Exercises - Python for Data Science - NumPy +
+                  Pandas</strong
+                >
+              </li>
+              <li><strong>AngularJS Crash Course for Beginners</strong></li>
+            </ul>
+
+            <!-- <p>
+            Unlock new opportunities and advance your career by enrolling in these
+            comprehensive courses today!
+          </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
