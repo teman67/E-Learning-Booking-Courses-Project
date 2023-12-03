@@ -1,31 +1,8 @@
-<!-- course_details.html -->
-
-{% extends 'base.html' %} {% load static %} {% block content %}
-
+{% extends 'base.html' %} {% block content %}
 <div class="container mt-5">
-  <h2 class="mb-4">Course Details</h2>
-
-  <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img
-          src="{% static 'images/image_courses/' %}{{ course_id }}.jpg"
-          class="card-img-top"
-          alt="Course {{ course_id|add:1 }} Image"
-          style="width: 100%"
-        />
-      </div>
-    </div>
-
-    <div class="col-md-8">
-      <h3>Course {{ course_id|add:1 }}</h3>
-      <p>{{ description }}</p>
-      <!-- Add any other details you want to display -->
-
-      <!-- Add a link to go back to the previous page -->
-      <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
-    </div>
-  </div>
+  <h2 class="mb-4">{{ course.name }}</h2>
+  <p>{{ course.description }}</p>
+  <p>Price: {{course.price}} $</p>
+  <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
 </div>
-
 {% endblock %}

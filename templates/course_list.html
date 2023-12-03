@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
-<!-- <h1>Course List</h1> -->
 <div class="container mt-5">
     <h2 class="mb-4">List of Courses</h2>
 
@@ -10,13 +10,12 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <img src="{% static 'images/image_courses/' %}{{ forloop.counter0 }}.jpg" class="card-img-top"
-                    alt="Course {{ forloop.counter }} Image" style="width: 90%; height: 15rem" />
+                    alt="Course {{ forloop.counter }} Image" style="width: 90%; height: 15rem; display: block;
+  margin-left: auto; margin-right: auto;" />
                 <div class="card-body">
-                    <h4 class="card-title">{{ course.name }}</h4>
-                    <!-- <p class="card-text">{{ course.description }}</p> -->
-                    <!-- <p class="card-text">Price: ${{ course.price }}</p> -->
+                    <h5 class="card-title">{{ course.name }}</h5>
                     <br>
-                    <a href="{% url 'course_detail' course_id=i %}" class="btn btn-primary">Learn More</a>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
