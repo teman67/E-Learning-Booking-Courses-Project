@@ -4,6 +4,24 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Booking, Course, UserProfile
+from .forms import CourseForm
+from .models import Course
+
+def course_list(request):
+    courses = Course.objects.all()
+    return render(request, 'course_list.html', {'courses': courses})
+
+
+def add_course(request):
+    if request.method == 'POST':
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('course_list')  # Redirect to the course list page
+    else:
+        form = CourseForm()
+
+    return render(request, 'add_course.html', {'form': form})
 
 class index(TemplateView):
 
