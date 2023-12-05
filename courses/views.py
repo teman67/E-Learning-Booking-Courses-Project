@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Booking, Course, UserProfile
 from .forms import CourseForm
-from .models import Course
+from .forms import BookingForm
 
 
 def course_list(request):
@@ -31,23 +31,30 @@ class index(TemplateView):
 
 class BookingView(View):
     def get(self, request, *args, **kwargs):
-        # Your logic for handling the GET request for the booking page
-        return render(request, 'booking.html')  # Replace 'booking.html' with the actual template name
+        courses = Course.objects.all()
+        return render(request, 'booking.html', {'courses': courses, 'form': BookingForm()})
 
     def post(self, request, *args, **kwargs):
-        # Your logic for handling the POST request for the booking page
         user = request.user
-        selected_courses = request.POST.getlist('courses')
+        form = BookingForm(request.POST)
 
-        if len(selected_courses) > 3:
-            messages.error(request, "You can select up to 3 courses.")
-            return redirect('booking')  # Redirect back to the booking page
+        if form.is_valid():
+            selected_courses = request.POST.get('courses')
 
-        booking = Booking.objects.create(user=user)
-        booking.courses.set(selected_courses)
+            if len(selected_courses.split(',')) > 3:
+                messages.error(request, "You can select up to 3 courses.")
+                return redirect('booking')
 
-        messages.success(request, "Booking successful!")
-        return redirect('booking')  # Redirect back to the booking page
+            booking = form.save(commit=False)
+            booking.user = user
+            booking.save()
+
+            messages.success(request, "Booking successful! Your message goes here.")
+            return redirect('booking')
+        else:
+            messages.error(request, "Form is not valid.")
+            return redirect('booking')
+            
 
 @login_required
 def user_profile(request):

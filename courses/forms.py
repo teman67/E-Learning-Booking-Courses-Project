@@ -5,7 +5,7 @@ from .models import Booking, Course
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['user', 'courses']
+        fields = ['courses']
 
 
 class CourseForm(forms.ModelForm):

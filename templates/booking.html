@@ -1,5 +1,48 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+<style>
+  .course-button.selected {
+    background-color: #0c490e;
+    /* Green color for selected courses */
+    color: white;
+  }
+
+  .messages {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+
+  .success {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  .error {
+    background-color: #f44336;
+    color: white;
+  }
+</style>
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li class="{% if message.tags %}{{ message.tags }}{% endif %}">
+    {{ message }}
+    <script>
+      setTimeout(function () {
+        var messageElement = document.querySelector(".messages");
+        if (messageElement) {
+          messageElement.remove();
+        }
+      }, 5000);
+    </script>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 <br />
 <h2>Booking Page</h2>
 
@@ -21,21 +64,21 @@
   <label for="last_name">Last Name:</label>
   <input type="text" id="last_name" name="last_name" required />
 
-  <label for="courses">Select Courses (up to 3):</label>
-  <select
-    id="courses"
-    name="courses"
-    multiple
-    size="5"
-    required
-    onchange="updateSelectionCount()"
+  <label>Select Courses (up to 3):</label>
+
+  {% for course in courses %}
+  <button
+    type="button"
+    class="course-button"
+    value="{{ course.name }}"
+    onclick="toggleSelection(this)"
   >
-    {% with '1 2 3 4 5 6 7 8 9 10' as course_list %}
-    {% for i in course_list.split %}
-    <option value="{{ i }}">Course {{ i }}</option>
-    {% endfor %} 
-    {% endwith %}
-  </select>
+    {{ course.name }}
+  </button>
+  {% endfor %}
+
+  <input type="hidden" id="selectedCourses" name="courses" />
+
   <span id="selectionCount">0</span>/3 courses selected
   <button type="submit">Submit Booking</button>
 </form>
@@ -43,24 +86,36 @@
 <script>
   var selectedCourses = [];
 
-  function updateSelectionCount() {
-    var selectElement = document.getElementById("courses");
-    var countElement = document.getElementById("selectionCount");
-    var selectedCount = 0;
+  function toggleSelection(button) {
+    var courseName = button.value;
+    var index = selectedCourses.indexOf(courseName);
 
-    selectedCourses = [];
-    for (var i = 0; i < selectElement.options.length; i++) {
-      if (selectElement.options[i].selected) {
-        selectedCount++;
-        selectedCourses.push(selectElement.options[i].value);
+    if (index === -1) {
+      // Course not selected, add to the list
+      if (selectedCourses.length < 3) {
+        selectedCourses.push(courseName);
+        button.classList.add("selected");
+      } else {
+        alert("You can select up to 3 courses.");
       }
+    } else {
+      // Course already selected, remove from the list
+      selectedCourses.splice(index, 1);
+      button.classList.remove("selected");
     }
 
-    countElement.innerHTML = selectedCount;
+    // Update the hidden input with selected courses
+    document.getElementById("selectedCourses").value =
+      selectedCourses.join(",");
+    document.getElementById("selectionCount").innerHTML =
+      selectedCourses.length;
   }
 
   function validateForm() {
-    if (selectedCourses.length > 3) {
+    if (selectedCourses.length === 0) {
+      alert("Please select at least one course.");
+      return false;
+    } else if (selectedCourses.length > 3) {
       alert("You can select up to 3 courses.");
       return false;
     }

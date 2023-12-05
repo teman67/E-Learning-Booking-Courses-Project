@@ -14,7 +14,9 @@ class Course(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    courses = models.ManyToManyField(Course)
+    # courses = models.ManyToManyField(Course)
+    courses = models.CharField(max_length=255,null=True)
+    
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
