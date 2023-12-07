@@ -5,7 +5,7 @@ from .models import Booking, Course
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['courses']
+        fields = ['first_name', 'last_name', 'courses']
         widgets = {
             'courses': forms.CheckboxSelectMultiple,
         }

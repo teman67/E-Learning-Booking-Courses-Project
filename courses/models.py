@@ -14,8 +14,12 @@ class Course(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255,default="")  # Add first name field
+    last_name = models.CharField(max_length=255,default="")   # Add last name field
     courses = models.ManyToManyField(Course)
-    # courses = models.CharField(max_length=255,null=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
     
 
 class UserProfile(models.Model):

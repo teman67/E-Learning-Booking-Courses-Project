@@ -55,6 +55,7 @@ class BookingView(View):
         else:
             messages.error(request, "Form is not valid.")
             return redirect('booking')
+
             
 
 @login_required
