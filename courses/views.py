@@ -40,6 +40,12 @@ class BookingView(View):
         if form.is_valid():
             selected_courses = form.cleaned_data['courses']
 
+            # Check if the user has already booked 3 courses
+            if Booking.objects.filter(user=user).count() + len(selected_courses) > 3:
+                messages.error(request, "You can only book up to 3 courses.")
+                return redirect('booking')
+
+            # Check if the selected courses exceed the limit
             if len(selected_courses) > 3:
                 messages.error(request, "You can select up to 3 courses.")
                 return redirect('booking')
