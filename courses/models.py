@@ -12,6 +12,9 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
+    def get_booking_count(self):
+        return self.booking_set.count()
+
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255,default="")  # Add first name field

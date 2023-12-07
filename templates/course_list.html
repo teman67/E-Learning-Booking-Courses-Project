@@ -25,6 +25,13 @@
             >Learn More</a
           >
         </div>
+        <div class="card-footer text-muted text-left">
+          <!-- Add text-right class for right alignment -->
+          <h6 class="card-title">
+            Bookings:
+            <span>{{ course.get_booking_count }}</span>
+          </h6>
+        </div>
       </div>
     </div>
     {% endfor %}
