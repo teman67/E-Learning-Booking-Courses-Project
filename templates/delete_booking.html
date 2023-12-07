@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>Delete Booking</h2>
+
+<p>
+  Are you sure you want to delete the booking for {{ booking.first_name }} {{
+  booking.last_name }}?
+</p>
+
+<form method="post" action="{% url 'delete_booking' booking.id %}">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+
+{% endblock %}

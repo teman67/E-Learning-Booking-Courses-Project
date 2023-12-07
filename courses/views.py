@@ -66,7 +66,7 @@ class BookingView(View):
             booking.save()
             form.save_m2m()  # Save the many-to-many relationships
 
-            messages.success(request, "Booking successful! Your message goes here.")
+            messages.success(request, "Booking successful!")
             return redirect('booking')
         else:
             messages.error(request, "Form is not valid.")
@@ -92,3 +92,34 @@ def user_profile(request):
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     return render(request, 'course_detail.html', {'course': course})
+
+
+class EditBookingView(View):
+    def get(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        form = BookingForm(instance=booking)
+        return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
+
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        form = BookingForm(request.POST, instance=booking)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Booking updated successfully.")
+            return redirect('user_profile')
+        else:
+            messages.error(request, "Form is not valid.")
+            return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
+
+
+class DeleteBookingView(View):
+    def get(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        return render(request, 'delete_booking.html', {'booking': booking})
+
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, id=booking_id, user=request.user)
+        booking.delete()
+        messages.success(request, "Booking deleted successfully.")
+        return redirect('user_profile')

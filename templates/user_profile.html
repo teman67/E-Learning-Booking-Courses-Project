@@ -1,26 +1,29 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>User Profile</h2>
+<div class="container">
+  <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
 
-<br />
+  <h3>Booked Courses</h3>
+  {% if booked_courses %}
+  <ul>
+    {% for booking in booked_courses %}
+    <li>
+      <strong>First Name:</strong> {{ booking.first_name }}<br />
+      <strong>Last Name:</strong> {{ booking.last_name }}<br />
+      <strong>Courses:</strong>
+      <ul>
+        {% for course in booking.courses.all %}
+        <li>{{ course.name }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'edit_booking' booking.id %}">Edit</a> |
+      <a href="{% url 'delete_booking' booking.id %}">Delete</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No booked courses found.</p>
+  {% endif %}
+</div>
 
-<h3>Booked Courses</h3>
-{% if booked_courses %}
-<ul>
-  {% for booking in booked_courses %}
-  <li>
-    <strong>Username:</strong> {{ user_profile.user.username }} <br />
-    <strong>First Name:</strong> {{ booking.first_name }}<br />
-    <strong>Last Name:</strong> {{ booking.last_name }}<br />
-    <strong>Courses:</strong>
-    <ul>
-      {% for course in booking.courses.all %}
-      <li>{{ course.name }}</li>
-      {% endfor %}
-    </ul>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No booked courses found.</p>
-{% endif %} {% endblock %}
+{% endblock %}
