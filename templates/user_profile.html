@@ -2,13 +2,25 @@
 
 <h2>User Profile</h2>
 
-<h3>Booked Courses:</h3>
-{% if user_profile.booked_courses.all %}
+<br />
+
+<h3>Booked Courses</h3>
+{% if booked_courses %}
 <ul>
-  {% for course in user_profile.booked_courses.all %}
-  <li>{{ course.name }}</li>
+  {% for booking in booked_courses %}
+  <li>
+    <strong>Username:</strong> {{ user_profile.user.username }} <br />
+    <strong>First Name:</strong> {{ booking.first_name }}<br />
+    <strong>Last Name:</strong> {{ booking.last_name }}<br />
+    <strong>Courses:</strong>
+    <ul>
+      {% for course in booking.courses.all %}
+      <li>{{ course.name }}</li>
+      {% endfor %}
+    </ul>
+  </li>
   {% endfor %}
 </ul>
 {% else %}
-<p>No booked courses yet.</p>
+<p>No booked courses found.</p>
 {% endif %} {% endblock %}

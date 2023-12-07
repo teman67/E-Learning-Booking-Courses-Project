@@ -4,8 +4,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Booking, Course, UserProfile
-from .forms import CourseForm
-from .forms import BookingForm
+from .forms import CourseForm, BookingForm
 
 
 def course_list(request):
@@ -64,7 +63,7 @@ def user_profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=user)
 
     booked_courses = Booking.objects.filter(user=user)
-    
+
     context = {
         'user_profile': user_profile,
         'booked_courses': booked_courses,
