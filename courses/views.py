@@ -50,12 +50,23 @@ class BookingView(View):
                 messages.error(request, "You can select up to 3 courses.")
                 return redirect('booking')
 
+            # Check if the user has already booked any of the selected courses
+            existing_bookings = Booking.objects.filter(user=user, courses__in=selected_courses)
+            if existing_bookings.exists():
+                messages.error(request, "You have already booked one or more of the selected courses.")
+                return redirect('booking')
+
+            # Check if the user has already booked 3 courses with a different form data
+            if Booking.objects.filter(user=user).count() >= 3:
+                messages.error(request, "You have already booked 3 courses.")
+                return redirect('booking')
+
             booking = form.save(commit=False)
             booking.user = user
             booking.save()
             form.save_m2m()  # Save the many-to-many relationships
 
-            messages.success(request, "Booking successful!")
+            messages.success(request, "Booking successful! Your message goes here.")
             return redirect('booking')
         else:
             messages.error(request, "Form is not valid.")
