@@ -6,9 +6,12 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ['courses']
+        widgets = {
+            'courses': forms.CheckboxSelectMultiple,
+        }
 
 
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['name', 'description', 'price']
+        fields = ['name', 'description', 'price', 'image_link']

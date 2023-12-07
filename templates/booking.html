@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+<!-- Add Bootstrap CDN link in your 'base.html' or include it locally -->
+
 <style>
   .course-button.selected {
-    background-color: #0c490e;
+    background-color: #20b825;
     /* Green color for selected courses */
     color: white;
   }
@@ -15,7 +17,7 @@
   }
 
   .success {
-    background-color: #4caf50;
+    background-color: #17691a;
     color: white;
   }
 
@@ -48,14 +50,9 @@
 
 <p>
   Fill out the form below to make a booking. You can select up to three courses.
-  <b> Hold the Control key </b> to select multiple courses:
 </p>
 
-<form
-  method="post"
-  action="{% url 'booking' %}"
-  onsubmit="return validateForm()"
->
+<form method="post" action="{% url 'booking' %}">
   {% csrf_token %}
 
   <label for="first_name">First Name:</label>
@@ -66,60 +63,45 @@
 
   <label>Select Courses (up to 3):</label>
 
-  {% for course in courses %}
-  <button
-    type="button"
-    class="course-button"
-    value="{{ course.name }}"
-    onclick="toggleSelection(this)"
-  >
-    {{ course.name }}
-  </button>
-  {% endfor %}
-
-  <input type="hidden" id="selectedCourses" name="courses" />
+  <div class="form-check">
+    {% for course in courses %}
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        name="courses"
+        value="{{ course.id }}"
+        id="course{{ course.id }}"
+        onclick="checkCourseLimit()"
+      />
+      <label class="form-check-label" for="course{{ course.id }}">
+        {{ course.name }}
+      </label>
+    </div>
+    {% endfor %}
+  </div>
 
   <span id="selectionCount">0</span>/3 courses selected
-  <button type="submit">Submit Booking</button>
+  <button type="submit" class="btn btn-primary">Submit Booking</button>
 </form>
 
 <script>
   var selectedCourses = [];
 
-  function toggleSelection(button) {
-    var courseName = button.value;
-    var index = selectedCourses.indexOf(courseName);
+  function checkCourseLimit() {
+    var checkboxes = document.querySelectorAll('input[name="courses"]:checked');
 
-    if (index === -1) {
-      // Course not selected, add to the list
-      if (selectedCourses.length < 3) {
-        selectedCourses.push(courseName);
-        button.classList.add("selected");
-      } else {
-        alert("You can select up to 3 courses.");
-      }
-    } else {
-      // Course already selected, remove from the list
-      selectedCourses.splice(index, 1);
-      button.classList.remove("selected");
+    if (checkboxes.length > 3) {
+      alert("You can select up to 3 courses.");
+      checkboxes[checkboxes.length - 1].checked = false; // Uncheck the last checkbox
     }
 
-    // Update the hidden input with selected courses
-    document.getElementById("selectedCourses").value =
-      selectedCourses.join(",");
-    document.getElementById("selectionCount").innerHTML =
-      selectedCourses.length;
+    updateSelectionCount();
   }
 
-  function validateForm() {
-    if (selectedCourses.length === 0) {
-      alert("Please select at least one course.");
-      return false;
-    } else if (selectedCourses.length > 3) {
-      alert("You can select up to 3 courses.");
-      return false;
-    }
-    return true;
+  function updateSelectionCount() {
+    var checkboxes = document.querySelectorAll('input[name="courses"]:checked');
+    document.getElementById("selectionCount").innerHTML = checkboxes.length;
   }
 </script>
 

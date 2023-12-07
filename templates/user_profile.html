@@ -1,15 +1,14 @@
 {% extends 'base.html' %} {% block content %}
-<br />
-<h2>{{ user_profile.user.username }}'s Profile</h2>
 
-<!-- Add any additional fields you want to display from the user profile -->
-<br />
-<h4>Booked Courses:</h4>
+<h2>User Profile</h2>
+
+<h3>Booked Courses:</h3>
+{% if user_profile.booked_courses.all %}
 <ul>
-  {% for booking in booked_courses %} 
-  {% for course in booking.courses.all %}
+  {% for course in user_profile.booked_courses.all %}
   <li>{{ course.name }}</li>
   {% endfor %}
-  {% endfor %}
 </ul>
-{% endblock %}
+{% else %}
+<p>No booked courses yet.</p>
+{% endif %} {% endblock %}

@@ -39,17 +39,18 @@ class BookingView(View):
         form = BookingForm(request.POST)
 
         if form.is_valid():
-            selected_courses = request.POST.get('courses')
+            selected_courses = form.cleaned_data['courses']
 
-            if len(selected_courses.split(',')) > 3:
+            if len(selected_courses) > 3:
                 messages.error(request, "You can select up to 3 courses.")
                 return redirect('booking')
 
             booking = form.save(commit=False)
             booking.user = user
             booking.save()
+            form.save_m2m()  # Save the many-to-many relationships
 
-            messages.success(request, "Booking successful! Your message goes here.")
+            messages.success(request, "Booking successful!")
             return redirect('booking')
         else:
             messages.error(request, "Form is not valid.")
