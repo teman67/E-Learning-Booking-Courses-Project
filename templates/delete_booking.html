@@ -3,8 +3,8 @@
 <h2>Delete Booking</h2>
 
 <p>
-  Are you sure you want to delete the booking for {{ booking.first_name }} {{
-  booking.last_name }}?
+  Are you sure you want to <strong> delete </strong> the booking for
+  <strong>{{ booking.first_name }} {{ booking.last_name }} </strong>?
 </p>
 
 <form method="post" action="{% url 'delete_booking' booking.id %}">
