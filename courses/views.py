@@ -41,6 +41,12 @@ class BookingView(View):
         if form.is_valid():
             selected_courses = form.cleaned_data['courses']
 
+            # Check if any of the selected courses is already full
+            for course in selected_courses:
+                if course.is_full():
+                    messages.error(request, f"The course {course.name} is already fully booked.")
+                    return redirect('booking')
+
             # Check if the user has already booked 3 courses
             existing_bookings_count = (
                 Booking.objects.filter(user=user)
@@ -112,6 +118,12 @@ class EditBookingView(View):
 
         if form.is_valid():
             selected_courses = form.cleaned_data['courses']
+
+            # Check if any of the selected courses is already full
+            for course in selected_courses:
+                if course.is_full():
+                    messages.error(request, f"The course {course.name} is already fully booked.")
+                    return redirect('booking')
 
              # Check if the user has already booked 3 courses
             existing_bookings_count = (

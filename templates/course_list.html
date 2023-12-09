@@ -26,11 +26,16 @@
           >
         </div>
         <div class="card-footer text-secondary text-center">
-          <!-- Add text-right class for right alignment -->
           <h5 class="card-title">
             Booked By:
             <span> {{ course.get_booking_count }} people</span>
           </h5>
+
+          {% if course.is_full %}
+          <p class="text-danger">Fully Booked</p>
+          {% else %}
+          <p class="text-success">Available for Booking</p>
+          {% endif %}
         </div>
       </div>
     </div>

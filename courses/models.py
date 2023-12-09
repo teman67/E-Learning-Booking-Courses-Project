@@ -18,6 +18,9 @@ class Course(models.Model):
     def get_booking_count(self):
         return self.booking_set.count()
 
+    def is_full(self):
+        return self.get_booking_count() >= 5
+
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255,default="") 
