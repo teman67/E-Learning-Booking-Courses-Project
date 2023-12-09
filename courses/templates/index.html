@@ -1,28 +1,48 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .background-image {
+    background-image: url("https://res.cloudinary.com/dlthn5m1i/image/upload/v1702141266/home_pic_2_wlw10h.jpg");
+    background-size: cover;
+    padding: 80px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.95);
+    animation: zoomIn 1.5s ease-out;
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(1.1);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+</style>
+
 <div class="container">
   <div class="row">
-    <div
-      class="col-md-12 text-white"
-      style="
-        background-image: url('https://res.cloudinary.com/dlthn5m1i/image/upload/v1702140705/home_pic_takleb.jpg');
-        background-size: cover;
-        padding: 100px;
-      "
-    >
+    <div class="col-md-12 background-image">
       <div class="row">
         <div class="col-md-6">
-          <!-- Adjusted offset to 1 -->
           <div
             style="
               padding: 5px;
-              background-color: rgba(0, 0, 0, 0.7);
+              background-color: rgba(0, 0, 0, 0.5);
               width: 100%;
               line-height: 2.3;
               text-align: left;
             "
           >
-            <h1>Explore Exciting Online Courses</h1>
-            <p>Enhance your skills with our diverse range of online courses:</p>
+            <h2>Explore Exciting Online Courses</h2>
+            <h4>
+              Enhance your skills with our diverse range of online courses:
+            </h4>
 
             <ul>
               <li><strong>Django with React | An Ecommerce Website</strong></li>
@@ -60,11 +80,6 @@
               </li>
               <li><strong>AngularJS Crash Course for Beginners</strong></li>
             </ul>
-
-            <!-- <p>
-            Unlock new opportunities and advance your career by enrolling in these
-            comprehensive courses today!
-          </p> -->
           </div>
         </div>
       </div>
