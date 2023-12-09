@@ -1,15 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Delete Booking</h2>
+<style>
+  .margin-left {
+    margin-left: 20px;
+  }
+</style>
 
-<p>
-  Are you sure you want to <strong> delete </strong> the booking for
-  <strong>{{ booking.first_name }} {{ booking.last_name }} </strong>?
-</p>
+<div class="margin-left">
+  <h2>Delete Booking</h2>
 
-<form method="post" action="{% url 'delete_booking' booking.id %}">
-  {% csrf_token %}
-  <button type="submit">Delete</button>
-</form>
+  <p>
+    Are you sure you want to <strong> delete </strong> the booking for
+    <strong>{{ booking.first_name }} {{ booking.last_name }} </strong>?
+  </p>
+
+  <form method="post" action="{% url 'delete_booking' booking.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+</div>
 
 {% endblock %}

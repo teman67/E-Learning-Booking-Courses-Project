@@ -23,6 +23,10 @@
     background-color: #f44336;
     color: white;
   }
+
+  .left-margin {
+    margin-left: 20px;
+  }
 </style>
 
 {% if messages %}
@@ -44,44 +48,47 @@
 {% endif %}
 
 <br />
-<h2>Booking Page</h2>
+<div class="left-margin">
+  <h2>Booking Page</h2>
 
-<p>
-  Fill out the form below to make a booking. You can select up to three courses.
-</p>
+  <p>
+    Fill out the form below to make a booking. You can select up to three
+    courses.
+  </p>
 
-<form method="post" action="{% url 'booking' %}">
-  {% csrf_token %}
+  <form method="post" action="{% url 'booking' %}">
+    {% csrf_token %}
 
-  <label for="first_name">First Name:</label>
-  <input type="text" id="first_name" name="first_name" required />
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required />
 
-  <label for="last_name">Last Name:</label>
-  <input type="text" id="last_name" name="last_name" required />
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required />
 
-  <label>Select Courses (up to 3):</label>
+    <label>Select Courses (up to 3):</label>
 
-  <div class="form-check">
-    {% for course in courses %}
     <div class="form-check">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        name="courses"
-        value="{{ course.id }}"
-        id="course{{ course.id }}"
-        onclick="checkCourseLimit()"
-      />
-      <label class="form-check-label" for="course{{ course.id }}">
-        {{ course.name }}
-      </label>
+      {% for course in courses %}
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="courses"
+          value="{{ course.id }}"
+          id="course{{ course.id }}"
+          onclick="checkCourseLimit()"
+        />
+        <label class="form-check-label" for="course{{ course.id }}">
+          {{ course.name }}
+        </label>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
 
-  <span id="selectionCount">0</span>/3 courses selected
-  <button type="submit" class="btn btn-primary">Submit Booking</button>
-</form>
+    <span id="selectionCount">0</span>/3 courses selected
+    <button type="submit" class="btn btn-primary">Submit Booking</button>
+  </form>
+</div>
 
 <script>
   var selectedCourses = [];
