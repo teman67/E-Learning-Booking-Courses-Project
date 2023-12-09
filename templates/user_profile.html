@@ -18,6 +18,11 @@
         background-color: #f44336;
         color: white;
     }
+
+    li {
+        list-style-type: none;
+    }
+
 </style>
 
 <div class="container">
@@ -51,14 +56,16 @@
         <li>
             <strong>First Name:</strong> {{ booking.first_name }}<br />
             <strong>Last Name:</strong> {{ booking.last_name }}<br />
+            <br>
             <strong>Courses:</strong>
             <ul>
                 {% for course in booking.courses.all %}
                 <li>{{ course.name }}</li>
                 {% endfor %}
             </ul>
-            <a href="{% url 'edit_booking' booking.id %}">Edit</a> |
-            <a href="{% url 'delete_booking' booking.id %}">Delete</a>
+            <br>
+            <a class="btn btn-primary" href="{% url 'edit_booking' booking.id %}">Edit</a> |
+            <a class="btn btn-primary" href="{% url 'delete_booking' booking.id %}">Delete</a>
         </li>
         {% endfor %}
     </ul>
