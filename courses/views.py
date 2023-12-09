@@ -59,7 +59,7 @@ class BookingView(View):
 
             # Check if the user booked three courses
             if total_courses_count > 3:
-                messages.error(request, "You have already booked 3 courses.")
+                messages.error(request, "You are trying to book more than 3 courses!")
                 return redirect('booking')
 
             # Check if the user has already booked any of the selected courses
@@ -80,7 +80,6 @@ class BookingView(View):
             return redirect('booking')
 
             
-
 @login_required
 def user_profile(request):
     user = request.user
