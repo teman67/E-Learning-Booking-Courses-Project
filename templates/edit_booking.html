@@ -1,37 +1,68 @@
 {% extends 'base.html' %} {% block content %}
 
+<style>
+    .messages {
+        list-style: none;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    .success {
+        background-color: #17691a;
+        color: white;
+    }
+
+    .error {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+
 <h2>Edit Booking</h2>
 
-<form
-  id="editBookingForm"
-  method="post"
-  action="{% url 'edit_booking' booking_id %}"
->
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit" id="saveChangesBtn">Save Changes</button>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+<form id="editBookingForm" method="post" action="{% url 'edit_booking' booking_id %}">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" id="saveChangesBtn" class="btn btn-primary">Save Changes</button>
 </form>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("editBookingForm");
-    var saveChangesBtn = document.getElementById("saveChangesBtn");
-    var courseCheckboxes = form.querySelectorAll('input[name="courses"]'); // Adjust the selector based on your form structure
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("editBookingForm");
+        var saveChangesBtn = document.getElementById("saveChangesBtn");
+        var courseCheckboxes = form.querySelectorAll('input[name="courses"]'); // Adjust the selector based on your form structure
+        var messagesContainer = document.querySelector('.messages');
 
-    form.addEventListener("submit", function (event) {
-      var selectedCourses = 0;
+        form.addEventListener("submit", function (event) {
+            var selectedCourses = 0;
 
-      courseCheckboxes.forEach(function (checkbox) {
-        if (checkbox.checked) {
-          selectedCourses++;
-        }
-      });
+            courseCheckboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    selectedCourses++;
+                }
+            });
 
-      if (selectedCourses > 3) {
-        alert("You cannot select more than 3 courses.");
-        event.preventDefault(); // Prevent form submission
-      }
+            if (selectedCourses > 3) {
+                alert("You cannot select more than 3 courses.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+
+        // Remove messages after 5 seconds
+        setTimeout(function () {
+            if (messagesContainer) {
+                messagesContainer.innerHTML = ''; // Clear the messages
+            }
+        }, 5000);
     });
-  });
 </script>
 
 {% endblock %}

@@ -111,6 +111,24 @@ class EditBookingView(View):
         form = BookingForm(request.POST, instance=booking)
 
         if form.is_valid():
+            selected_courses = form.cleaned_data['courses']
+
+             # Check if the user has already booked 3 courses
+            existing_bookings_count = (
+                Booking.objects.filter(user=request.user)
+                .exclude(id=booking_id)  # Exclude the current booking from count
+                .values('courses')
+                .annotate(course_count=Count('courses'))
+                .filter(course_count__gt=0)
+                .count()
+            )
+
+            total_courses_count = existing_bookings_count + len(selected_courses)
+
+            if total_courses_count > 3:
+                messages.error(request, "Editing this booking would exceed the limit of 3 courses.")
+                return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
+                
             form.save()
             messages.success(request, "Booking updated successfully.")
             return redirect('user_profile')

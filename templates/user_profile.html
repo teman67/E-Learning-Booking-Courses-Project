@@ -1,29 +1,70 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .messages {
+        list-style: none;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    .success {
+        background-color: #17691a;
+        color: white;
+    }
+
+    .error {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
 
 <div class="container">
-  <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
 
-  <h3>Booked Courses</h3>
-  {% if booked_courses %}
-  <ul>
-    {% for booking in booked_courses %}
-    <li>
-      <strong>First Name:</strong> {{ booking.first_name }}<br />
-      <strong>Last Name:</strong> {{ booking.last_name }}<br />
-      <strong>Courses:</strong>
-      <ul>
-        {% for course in booking.courses.all %}
-        <li>{{ course.name }}</li>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var messagesContainer = document.querySelector('.messages');
+
+            // Remove messages after 5 seconds
+            setTimeout(function () {
+                if (messagesContainer) {
+                    messagesContainer.innerHTML = ''; // Clear the messages
+                }
+            }, 5000);
+        });
+    </script>
+    {% endif %}
+
+    <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+
+    <h3>Booked Courses</h3>
+    {% if booked_courses %}
+    <ul>
+        {% for booking in booked_courses %}
+        <li>
+            <strong>First Name:</strong> {{ booking.first_name }}<br />
+            <strong>Last Name:</strong> {{ booking.last_name }}<br />
+            <strong>Courses:</strong>
+            <ul>
+                {% for course in booking.courses.all %}
+                <li>{{ course.name }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'edit_booking' booking.id %}">Edit</a> |
+            <a href="{% url 'delete_booking' booking.id %}">Delete</a>
+        </li>
         {% endfor %}
-      </ul>
-      <a href="{% url 'edit_booking' booking.id %}">Edit</a> |
-      <a href="{% url 'delete_booking' booking.id %}">Delete</a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No booked courses found.</p>
-  {% endif %}
+    </ul>
+    {% else %}
+    <p>No booked courses found.</p>
+    {% endif %}
 </div>
 
 {% endblock %}
