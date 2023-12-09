@@ -2,9 +2,36 @@
 
 <h2>Edit Booking</h2>
 
-<form method="post" action="{% url 'edit_booking' booking_id %}">
+<form
+  id="editBookingForm"
+  method="post"
+  action="{% url 'edit_booking' booking_id %}"
+>
   {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save Changes</button>
+  <button type="submit" id="saveChangesBtn">Save Changes</button>
 </form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("editBookingForm");
+    var saveChangesBtn = document.getElementById("saveChangesBtn");
+    var courseCheckboxes = form.querySelectorAll('input[name="courses"]'); // Adjust the selector based on your form structure
+
+    form.addEventListener("submit", function (event) {
+      var selectedCourses = 0;
+
+      courseCheckboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          selectedCourses++;
+        }
+      });
+
+      if (selectedCourses > 3) {
+        alert("You cannot select more than 3 courses.");
+        event.preventDefault(); // Prevent form submission
+      }
+    });
+  });
+</script>
 
 {% endblock %}

@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Booking, Course, UserProfile
 from .forms import CourseForm, BookingForm
+from django.db.models import Count
 
 
 def course_list(request):
@@ -41,24 +42,30 @@ class BookingView(View):
             selected_courses = form.cleaned_data['courses']
 
             # Check if the user has already booked 3 courses
-            if Booking.objects.filter(user=user).count() + len(selected_courses) > 3:
-                messages.error(request, "You can only book up to 3 courses.")
-                return redirect('booking')
+            existing_bookings_count = (
+                Booking.objects.filter(user=user)
+                .values('courses')
+                .annotate(course_count=Count('courses'))
+                .filter(course_count__gt=0)
+                .count()
+            )
+
+            total_courses_count = existing_bookings_count + len(selected_courses)
 
             # Check if the selected courses exceed the limit
             if len(selected_courses) > 3:
                 messages.error(request, "You can select up to 3 courses.")
                 return redirect('booking')
 
+            # Check if the user booked three courses
+            if total_courses_count > 3:
+                messages.error(request, "You have already booked 3 courses.")
+                return redirect('booking')
+
             # Check if the user has already booked any of the selected courses
             existing_bookings = Booking.objects.filter(user=user, courses__in=selected_courses)
             if existing_bookings.exists():
                 messages.error(request, "You have already booked one or more of the selected courses.")
-                return redirect('booking')
-
-            # Check if the user has already booked 3 courses with a different form data
-            if Booking.objects.filter(user=user).count() >= 3:
-                messages.error(request, "You have already booked 3 courses.")
                 return redirect('booking')
 
             booking = form.save(commit=False)
