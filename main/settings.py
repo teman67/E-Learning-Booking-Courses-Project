@@ -32,10 +32,10 @@ DEBUG = "DEVELOPMENT" in os.environ
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com',
+ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com', 'book-courses-cbaeecdf3d3f.herokuapp.com',
                  '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost', '8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com']
                  
-CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "https://8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com", "https://8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com"]
+CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "https://8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com", "https://8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com","https://book-courses-cbaeecdf3d3f.herokuapp.com/"]
 
 
 # Application definition
