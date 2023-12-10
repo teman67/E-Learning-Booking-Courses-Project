@@ -1,11 +1,27 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  .card img {
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .card:hover img {
+    transform: scale(1.05);
+  }
+</style>
+
 <div class="container mt-5">
   <h2 class="mb-4">List of Courses</h2>
 
   <div class="row">
     {% for course in courses %}
     <div class="col-md-4 mb-4">
-      <div class="card">
+      <div
+        class="card"
+        data-toggle="tooltip"
+        data-html="true"
+        data-template="{% if course.is_full %}<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner' style='font-size: larger;'></div></div>{% else %}<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner' style='font-size: larger;'></div></div>{% endif %}"
+        title="{% if course.is_full %}Fully Booked{% else %}Available for Booking{% endif %}"
+      >
         <img
           src="{{ course.image_link }}"
           class="card-img-top"
@@ -16,6 +32,7 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            transition: transform 0.3s ease-in-out;
           "
         />
         <div class="card-body">
@@ -30,16 +47,17 @@
             Booked By:
             <span> {{ course.get_booking_count }} people</span>
           </h5>
-
-          {% if course.is_full %}
-          <p class="text-danger">Fully Booked</p>
-          {% else %}
-          <p class="text-success">Available for Booking</p>
-          {% endif %}
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
+<script>
+  // Initialize tooltips
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 {% endblock %}
