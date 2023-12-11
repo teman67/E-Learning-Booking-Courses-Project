@@ -29,13 +29,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
+# DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['booking-courses-41c3e98a7e1a.herokuapp.com', 'book-courses-cbaeecdf3d3f.herokuapp.com',
                  '8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com', 'localhost', '8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com']
-                 
-CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "https://8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com", "https://8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com","https://book-courses-cbaeecdf3d3f.herokuapp.com/"]
+
+CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "https://8000-teman67-project-4-ahmidn5ytz.us2.codeanyapp.com",
+                        "https://8000-teman67-project-4-yea4j1mtkt.us2.codeanyapp.com", "https://book-courses-cbaeecdf3d3f.herokuapp.com/"]
 
 
 # Application definition
@@ -54,7 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
     'crispy_forms',
-    'crispy_bootstrap5',
+    'crispy_bootstrap3',
     'courses',
 ]
 
@@ -71,8 +73,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 ROOT_URLCONF = 'main.urls'
 
@@ -81,7 +83,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates' , 'allauth'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -91,7 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'builtins':[
+            'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
             ]
@@ -100,7 +102,7 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
@@ -164,8 +166,8 @@ ACCOUNT_EMAIL_REQUIRED = 'none'
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_USERNAME_MIN_LENGTH = 5
-LOGIN_URL='/templates/login'
-LOGIN_REDIRECT_URL='/'
+LOGIN_URL = '/templates/login'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Static files (CSS, JavaScript, Images)
