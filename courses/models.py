@@ -35,6 +35,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     courses_booked = models.PositiveIntegerField(default=0)
 
+    def total_price_of_booked_courses(self):
+        total_price = 0
+        booked_courses = Booking.objects.filter(user=self.user)
+        for booking in booked_courses:
+            total_price += sum(course.price for course in booking.courses.all())
+        return total_price
+
     def __str__(self):
         return self.user.username
 

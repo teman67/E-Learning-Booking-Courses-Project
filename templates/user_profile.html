@@ -22,7 +22,6 @@
     li {
         list-style-type: none;
     }
-
 </style>
 
 <div class="container">
@@ -69,6 +68,9 @@
         </li>
         {% endfor %}
     </ul>
+
+    <p><strong>Total Price of Booked Courses:</strong> ${{ user_profile.total_price_of_booked_courses }}</p>
+
     {% else %}
     <p>No booked courses found.</p>
     {% endif %}
