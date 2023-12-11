@@ -164,6 +164,13 @@ class EditBookingView(View):
                 messages.error(request, "Editing this booking would exceed the limit of 3 courses.")
                 return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
 
+            # Check if any of the selected courses are already booked by the user
+            already_booked_courses = request.user.booking_set.exclude(id=booking_id).values_list('courses', flat=True)
+            for selected_course in selected_courses:
+                if selected_course.id in already_booked_courses:
+                    messages.error(request, f"You have already booked the course {selected_course.name}.")
+                    return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
+
             form.save()
             messages.success(request, "Booking updated successfully.")
             return redirect('user_profile')
