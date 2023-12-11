@@ -125,11 +125,17 @@ def course_detail(request, course_id):
 
 class EditBookingView(View):
     def get(self, request, booking_id, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('home')
+
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
         form = BookingForm(instance=booking)
         return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
 
     def post(self, request, booking_id, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('home')
+
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
         form = BookingForm(request.POST, instance=booking)
 
@@ -142,7 +148,7 @@ class EditBookingView(View):
                     messages.error(request, f"The course {course.name} is already fully booked.")
                     return redirect('booking')
 
-             # Check if the user has already booked 3 courses
+            # Check if the user has already booked 3 courses
             existing_bookings_count = (
                 Booking.objects.filter(user=request.user)
                 .exclude(id=booking_id)  # Exclude the current booking from count
@@ -157,7 +163,7 @@ class EditBookingView(View):
             if total_courses_count > 3:
                 messages.error(request, "Editing this booking would exceed the limit of 3 courses.")
                 return render(request, 'edit_booking.html', {'form': form, 'booking_id': booking_id})
-                
+
             form.save()
             messages.success(request, "Booking updated successfully.")
             return redirect('user_profile')
@@ -167,7 +173,11 @@ class EditBookingView(View):
 
 
 class DeleteBookingView(View):
+    
     def get(self, request, booking_id, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('home')
+            
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
         return render(request, 'delete_booking.html', {'booking': booking})
 
