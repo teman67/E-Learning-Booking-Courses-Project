@@ -104,14 +104,14 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-    .container>.row {
+    .screen-size>.container>.row {
         margin-right: calc(-2 * var(--bs-gutter-x));
         margin-left: calc(-2 * var(--bs-gutter-x));
     }
 }
 
 @media only screen and (max-width: 360px) {
-    .container>.row {
+    .screen-size>.container>.row {
         margin-right: calc(-3 * var(--bs-gutter-x));
         margin-left: calc(-3 * var(--bs-gutter-x));
     }
