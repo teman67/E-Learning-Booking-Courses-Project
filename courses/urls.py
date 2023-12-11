@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import index, BookingView, course_detail, user_profile, course_list, EditBookingView, DeleteBookingView
+from .views import index, BookingView, course_detail, user_profile, course_list, EditBookingView, DeleteBookingView, custom_404_view
+from django.conf.urls import handler404
 
 
 urlpatterns = [
@@ -11,3 +12,5 @@ urlpatterns = [
     path('edit-booking/<int:booking_id>/', EditBookingView.as_view(), name='edit_booking'),
     path('delete-booking/<int:booking_id>/', DeleteBookingView.as_view(), name='delete_booking'),
 ]
+
+handler404 = custom_404_view

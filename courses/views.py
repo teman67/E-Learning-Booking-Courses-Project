@@ -177,12 +177,19 @@ class DeleteBookingView(View):
     def get(self, request, booking_id, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('home')
-            
+
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
         return render(request, 'delete_booking.html', {'booking': booking})
 
     def post(self, request, booking_id, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('home')
+
         booking = get_object_or_404(Booking, id=booking_id, user=request.user)
         booking.delete()
         messages.success(request, "Booking deleted successfully.")
         return redirect('user_profile')
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
