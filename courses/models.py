@@ -8,6 +8,7 @@ class Course(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image_link = models.URLField(null=True)
+    # comments = models.ManyToManyField(Comment, related_name='course_comments')
 
     def get_course_ids(self):
         return list(Course.objects.values_list('id', flat=True))
@@ -54,3 +55,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.course.name}"

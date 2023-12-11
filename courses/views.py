@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Booking, Course, UserProfile
-from .forms import CourseForm, BookingForm
+from .models import Booking, Course, UserProfile, Comment
+from .forms import CourseForm, BookingForm, CommentForm
 from django.db.models import Count
 
 
@@ -101,9 +101,26 @@ def user_profile(request):
     return render(request, 'user_profile.html', context)
 
 
+# def course_detail(request, course_id):
+#     course = get_object_or_404(Course, id=course_id)
+#     return render(request, 'course_detail.html', {'course': course})
+
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
-    return render(request, 'course_detail.html', {'course': course})
+    comments = Comment.objects.filter(course=course)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.user = request.user
+            new_comment.course = course
+            new_comment.save()
+            comment_form = CommentForm()  # Clear the form after submission
+    else:
+        comment_form = CommentForm()
+
+    return render(request, 'course_detail.html', {'course': course, 'comments': comments, 'comment_form': comment_form})
 
 
 class EditBookingView(View):

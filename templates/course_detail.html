@@ -14,7 +14,7 @@
         <div class="card-body">
           <h2 class="mb-4">{{ course.name }}</h2>
           <p>{{ course.description }}</p>
-          <p><strong> Price: {{course.price}} $ </strong></p>
+          <p><strong> Price: {{ course.price }} $ </strong></p>
           <a href="javascript:history.back()" class="btn btn-outline-primary"
             >Go Back</a
           >
@@ -25,6 +25,29 @@
             href="{% url 'booking' %}"
             >Book this Course</a
           >
+          {% endif %}
+
+          <!-- Display existing comments -->
+          {% if comments %}
+          <h4 class="mt-4">Comments:</h4>
+          <ul>
+            {% for comment in comments %}
+            <li>{{ comment.user.username }} - {{ comment.text }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          <!-- Comment form for logged-in users -->
+          {% if user.is_authenticated %}
+          <h4 class="mt-4">Leave a Comment:</h4>
+          <form method="post" action="{% url 'course_detail' course.id %}">
+            {% csrf_token %} {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary">
+              Submit Comment
+            </button>
+          </form>
+          {% else %}
+          <p class="mt-4">Login to leave a comment.</p>
           {% endif %}
         </div>
       </div>
