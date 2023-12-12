@@ -207,3 +207,30 @@ def search_view(request):
         results = None
 
     return render(request, 'search_results.html', {'results': results, 'query': query})
+
+
+def edit_comment(request, comment_id): 
+    if not request.user.is_authenticated:
+        return redirect('home')  # Redirect to the home page for non-authenticated users
+           
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Comment updated successfully.")
+            return redirect('course_detail', course_id=comment.course.id)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'edit_comment.html', {'form': form, 'comment_id': comment_id})
+
+def delete_comment(request, comment_id):
+    if not request.user.is_authenticated:
+        return redirect('home')  # Redirect to the home page for non-authenticated users
+
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+    course_id = comment.course.id
+    comment.delete()
+    messages.success(request, "Comment deleted successfully.")
+    return redirect('course_detail', course_id=course_id)

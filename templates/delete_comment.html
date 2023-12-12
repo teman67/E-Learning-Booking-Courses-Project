@@ -1,9 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <h2>Delete Comment</h2>
 <p>Are you sure you want to delete this comment?</p>
-<form method="post" action="{% url 'delete_comment' comment_id %}">
+<form
+  id="deleteCommentForm"
+  method="post"
+  action="{% url 'delete_comment' comment_id %}"
+>
   {% csrf_token %}
-  <button type="submit">Delete</button>
+  <button type="button" class="btn btn-primary">Delete</button>
   <a href="{% url 'course_detail' course_id=comment.course.id %}">Cancel</a>
 </form>
 {% endblock %}
