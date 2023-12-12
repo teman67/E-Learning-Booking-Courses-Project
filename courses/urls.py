@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, BookingView, course_detail, user_profile, course_list, EditBookingView, DeleteBookingView, custom_404_view, search_view
+from .views import *
 from django.conf.urls import handler404
 
 

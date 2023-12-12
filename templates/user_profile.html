@@ -53,9 +53,11 @@
     <ul>
         {% for booking in booked_courses %}
         <li>
+            {% if forloop.counter == 1 %}
             <strong>First Name:</strong> {{ booking.first_name }}<br />
             <strong>Last Name:</strong> {{ booking.last_name }}<br />
             <br>
+            {% endif %}
             <strong>Courses:</strong>
             <ul>
                 {% for course in booking.courses.all %}
@@ -68,12 +70,13 @@
         </li>
         {% endfor %}
     </ul>
-
+    
     <p><strong>Total Price of Booked Courses:</strong> ${{ user_profile.total_price_of_booked_courses }}</p>
-
+    
     {% else %}
     <p>No booked courses found.</p>
     {% endif %}
+
 </div>
 
 {% endblock %}
