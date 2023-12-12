@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import Booking, Course, UserProfile, Comment
 from .forms import CourseForm, BookingForm, CommentForm
 from django.db.models import Count
+from django.db.models import Q
 
 
 def course_list(request):
@@ -200,3 +201,13 @@ class DeleteBookingView(View):
 
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
+
+
+def search_view(request):
+    query = request.GET.get('q')
+    if query:
+        results = Course.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    else:
+        results = None
+
+    return render(request, 'search_results.html', {'results': results, 'query': query})

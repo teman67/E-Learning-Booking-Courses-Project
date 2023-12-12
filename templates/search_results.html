@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h1>Search Results</h1>
+  <p>Showing results for: <strong>{{ query }}</strong></p>
+
+  {% if results %}
+  <ul>
+    {% for result in results %}
+    <li>{{ result.name }} - {{ result.description }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No results found.</p>
+  {% endif %}
+</div>
+{% endblock %}
