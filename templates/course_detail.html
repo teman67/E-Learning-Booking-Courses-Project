@@ -1,4 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+
+<style>
+  @media only screen and (max-width: 440px) {
+    .windows-comments {
+      scale: 75%;
+    }
+  }
+</style>
+
 <div class="container mt-5">
   <div class="card">
     <div class="row no-gutters">
@@ -40,7 +49,11 @@
           <!-- Comment form for logged-in users -->
           {% if user.is_authenticated %}
           <h4 class="mt-4">Leave a Comment:</h4>
-          <form method="post" action="{% url 'course_detail' course.id %}">
+          <form
+            class="windows-comments"
+            method="post"
+            action="{% url 'course_detail' course.id %}"
+          >
             {% csrf_token %} {{ comment_form.as_p }}
             <button type="submit" class="btn btn-primary">
               Submit Comment
