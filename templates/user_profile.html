@@ -48,7 +48,6 @@
     <hr>
     <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
 
-    <h3>Booked Courses</h3>
     {% if booked_courses %}
     <ul>
         {% for booking in booked_courses %}
@@ -57,8 +56,7 @@
             <strong>First Name:</strong> {{ booking.first_name }}<br />
             <strong>Last Name:</strong> {{ booking.last_name }}<br />
             <hr>
-            <strong>Courses:</strong><br>
-            <br>
+            <h3>Booked Courses: </h3><br>
             {% endif %}
             <ul>
                 {% for course in booking.courses.all %}
