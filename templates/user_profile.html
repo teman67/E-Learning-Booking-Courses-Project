@@ -45,7 +45,7 @@
         });
     </script>
     {% endif %}
-
+    <hr>
     <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
 
     <h3>Booked Courses</h3>
@@ -56,9 +56,10 @@
             {% if forloop.counter == 1 %}
             <strong>First Name:</strong> {{ booking.first_name }}<br />
             <strong>Last Name:</strong> {{ booking.last_name }}<br />
+            <hr>
+            <strong>Courses:</strong><br>
             <br>
             {% endif %}
-            <strong>Courses:</strong>
             <ul>
                 {% for course in booking.courses.all %}
                 <li>{{ course.name }}</li>
@@ -70,7 +71,7 @@
         </li>
         {% endfor %}
     </ul>
-    
+    <hr>
     <p><strong>Total Price of Booked Courses:</strong> ${{ user_profile.total_price_of_booked_courses }}</p>
     
     {% else %}
