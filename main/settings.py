@@ -44,6 +44,7 @@ CSRF_TRUSTED_ORIGINS = ["https://booking-courses-41c3e98a7e1a.herokuapp.com", "h
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+     'django_extensions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
