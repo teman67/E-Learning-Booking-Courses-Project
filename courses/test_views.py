@@ -39,9 +39,6 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'booking.html')
 
-        # Add necessary setup for booking view testing
-
-    # Add more view tests as needed
 
     def test_user_profile_view(self):
         self.client.login(username='testuser', password='testpassword')
@@ -62,9 +59,6 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'course_detail.html')
 
-        # Add necessary setup for course detail view testing
-
-    # Add more view tests as needed
 
     def test_edit_comment_view(self):
         self.client.login(username='testuser', password='testpassword')
@@ -82,7 +76,6 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'edit_comment.html')
 
-        # Add necessary setup for edit comment view testing
 
     def test_delete_comment_view(self):
         self.client.login(username='testuser', password='testpassword')
@@ -99,7 +92,3 @@ class ViewsTestCase(TestCase):
         response = self.client.get(reverse('delete_comment', args=[comment.id]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'delete_comment.html')
-
-        # Add necessary setup for delete comment view testing
-
-# Add more view tests as needed

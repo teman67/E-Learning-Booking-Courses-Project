@@ -70,4 +70,3 @@ class ModelsTestCase(TestCase):
         self.assertEqual(comment.text, 'This is a test comment.')
         self.assertIsNotNone(comment.created_at)
 
-# Add more tests as needed
