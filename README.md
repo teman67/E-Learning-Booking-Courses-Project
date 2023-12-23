@@ -1,10 +1,10 @@
-# Woodland Whispers Retreat
+# E-Learning Booking Courses
 
 Discover a serene lakeside getaway at Woodland Whispers Retreat. Our Django-based website offers a seamless platform for exploring and booking cozy cabin rentals in a picturesque setting. Immerse yourself in nature, enjoy excellent fishing, embark on kayaking adventures, hike scenic trails, swim in refreshing lake waters, and even explore nearby caves. Experience the perfect blend of tranquility and outdoor recreation at Woodland Whispers Retreat. Book your cabin today and create unforgettable memories in this lakeside haven.
 
-![Home Screen](/documentation/readme_images/am-i-responsive.PNG)
+![Home Screen](/readme/home.jpg)
 
-[View Woodland Whispers Retreat live website here](https://woodland-whispers-retreat.herokuapp.com/)
+[View E-Learning Booking Courses live website here](https://book-courses-cbaeecdf3d3f.herokuapp.com/)
 - - -
 
 ## Table of Contents
