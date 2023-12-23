@@ -19,10 +19,6 @@
     --border: 1px solid #00000030;
 }
 
-/* .container-fluid {
-    background-color: var(--off-gray);
-} */
-
 html,
 body {
     height: 100%;
@@ -59,10 +55,6 @@ main {
     margin-top: 1rem;
 }
 
-/* .row a {
-    text-align: center;
-
-} */
 
 /* Header */
 .navbar {
@@ -103,16 +95,3 @@ footer {
     align-items: center;
     border-top: var(--border);
 }
-
-/* @media only screen and (max-width: 600px) {
-    .background-image {
-        padding: 5px;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-    .screen-size>.container>.row {
-        margin-right: calc(-3 * var(--bs-gutter-x));
-        margin-left: calc(-3 * var(--bs-gutter-x));
-    }
-} */
