@@ -68,34 +68,13 @@ The goal of the E-Learning Booking Courses project is to create an immersive and
 
 ### Agile Methodology
 
-Agile Methodology was used to help prioritize and organize tasks, writting the user stories and using Project Boards on Github. Template was created to help write User Stories and define Epics
+Agile Methodology was used to help prioritize and organize tasks, writting the user stories and using Project Boards on [Github](https://github.com/users/teman67/projects/5). Template was created to help write User Stories and define Epics
 
 * Epics were written containing possible user stories and based on that the website was made.
 * User stories were created by looking at epics and through iterations the project was advancing.
 * Project Board is set to public.
 * Project Board was used to track progression of the task through the Todo, In progress and Done columns
 * Labels were added to sort the issues based on the importance.
-
-<details>
-<summary> User Stories Template
-</summary>
-
-![User Stories Template](documentation/readme_images/template.PNG)
-</details>
-
-<details>
-<summary> User Stories, Issues
-</summary>
-
-![User Stories, Issues](documentation/readme_images/issues.PNG)
-</details>
-
-<details>
-<summary> Project Board
-</summary>
-
-![Project Board](documentation/readme_images/project-board.PNG)
-</details>
 
 ### User Stories
 
@@ -129,10 +108,10 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 
 * Alert messages
 * Crud functionality
-* Cabin pagination
+* Course Lists
 * Admin panel
-* Double bookings
-* Book Amenities
+* Limitation of Bookings for each user
+* Course Description
 * Total Price
 
 4. Maintain consistent design with responsiveness in mind
