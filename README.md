@@ -152,19 +152,16 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 
 ## Design
 
-The Woodland Whispers Retreat website boasts an inviting and visually pleasing design. Earthy tones and a warm color palette evoke a sense of tranquility. The navigation bar features a circular logo and easy-to-read text. Captivating photos are displayed in a bordered carousel with elegant captions. The about section utilizes a dark background and horizontal lines for clarity. Social media links are presented in the contact section, and the footer complements the overall design.
+The E-Learning Booking Courses website boasts an inviting and visually pleasing design. Develop an intuitive and user-friendly interface for seamless navigation and interaction. Prioritize accessibility, ensuring a positive experience for users with diverse needs. Establish mechanisms for gathering user feedback to enhance course content and platform functionality. Social media links are presented in the contact section, and the footer complements the overall design.
 
-### Cabin Images
+### Course Images and Texts
 
-All cabin images were created using Artificial Inteligence, AI image generator [Craiyon](https://www.craiyon.com/).
+All course images and texts were token from random online courses of [Udemy](https://www.udemy.com/).
 
 ### Logo
 
-Logo was also created using AI image generator [Craiyon](https://www.craiyon.com/).
+Logo was downloaded from goolge image [Google](https://www.google.com/).
 
-### Typography
-
-The 'Lora' font is specified as the primary font, and the 'Domine' font is specified as a fallback font.
 
 ### Wireframes
 
