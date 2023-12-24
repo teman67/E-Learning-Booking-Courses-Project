@@ -125,49 +125,34 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 * Maintain consistent design
 * Test responsiveness
 
-### Target Audience
-
-* Individuals seeking a serene and tranquil lakeside retreat experience.
-* Travelers looking for a seamless and hassle-free booking process for their getaway.
-* Outdoor enthusiasts interested in exploring nature and enjoying outdoor adventures.
-* People who value a captivating and visually appealing online experience.
-* Mobile users who want the convenience of planning their retreat from any device.
-* Couples looking for a romantic and secluded getaway surrounded by nature's beauty.
-* Families in search of a serene and family-friendly retreat to create lasting memories.
-* Nature photographers or artists searching for picturesque landscapes and natural inspiration.
 
 ### First time user
 
 * Simple and intuitive website navigation for easy exploration and discovery.
-* Engaging visuals showcasing the beauty of the retreat and its surroundings.
-* Informative content providing an overview of amenities, activities.
+* Informative content providing an overview of courses.
 * User-friendly forms with clear validation messages to ensure accurate input.
 * Easy Registration process.
+* Read Comments
 
 ### Registered User
 
 * Seamless login process with a secure and personalized user account.
-* Browsing available cabins
-* Booking
-* Access to a personalized dashboard displaying booking history and upcoming reservations.
+* Browsing available courses.
+* Booking.
+* Access to a personalized profile displaying booking history.
 * Ability to easily modify or cancel existing bookings for flexibility and convenience.
+* Leaving Comments.
 
 ### Admin user
 
 * Secure and separate login portal for admin users with appropriate access control.
-* Access to an admin dashboard for managing cabins, amenities, and bookings.
-* Ability to add, edit, or delete cabin listings, including details and availability.
-* Management of amenity options, such as adding, updating, or removing amenities.
+* Access to an admin dashboard for managing booking, course lists, and comments.
+* Ability to add, edit, or delete courses, booking, and comments.
 * Ability to delete user accounts, providing the necessary control for managing user data and accounts.
-* Management of bookings, including the ability to view, modify, or delete bookings as needed.
 
 ## Design
 
 The Woodland Whispers Retreat website boasts an inviting and visually pleasing design. Earthy tones and a warm color palette evoke a sense of tranquility. The navigation bar features a circular logo and easy-to-read text. Captivating photos are displayed in a bordered carousel with elegant captions. The about section utilizes a dark background and horizontal lines for clarity. Social media links are presented in the contact section, and the footer complements the overall design.
-
-### Color Scheme
-
-![Color Scheme](documentation/readme_images/color-scheme.PNG)
 
 ### Cabin Images
 
