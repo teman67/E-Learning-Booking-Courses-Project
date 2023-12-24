@@ -114,12 +114,16 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 * Course Description
 * Total Price
 
-4. Maintain consistent design with responsiveness in mind
+5. Commenting
+
+* User can leave comment for each courses
+* Crud functionality
+* Alert messages
+
+6. Maintain consistent design with responsiveness in mind
 
 * Maintain consistent design
 * Test responsiveness
-
-Detailed look can be found in the [project board](https://github.com/users/Thomas-Tomo/projects/2)
 
 ### Target Audience
 
