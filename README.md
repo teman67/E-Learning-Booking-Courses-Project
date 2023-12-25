@@ -193,51 +193,56 @@ Logo was downloaded from goolge image [Google](https://www.google.com/).
 
 1. AllAuth User Model
     * Django Allauth, the User model is the default user model provided by the Django authentication system
-    * The User entity has a one-to-many relationship with the Booking entity. This means that a User can have multiple Bookings, but each Booking is associated with only one User.
+    * The User entity has a one-to-many relationship with the Booking and Comment entities. This means that a User can have multiple Bookings and Comments, but each Booking and Comment is associated with only one User.
 
 ---
 
-2. Amenity Model
-    * Data model created so admin can add amenities to the cabin booking, and regulate the name and price of the amenities
+2. Course Model
+    * Admin can add multiply courses in Course model. So users can see the courses and the relevent information on course list page.
     * Only Admin can change the data in the backend.
-    * User can book those amenities through the Booking Model
-    * An Amenity can be associated with multiple Cabins, and a Cabin can have multiple Amenities. This is represented by the many-to-many relationship between Amenity and Cabin.
-    * There are two amenites set up, which are cave exploration and kayak rental
+    * User can see the course information and image based on the chosen course.
+    * Information provided is price, image,and description.
+    * Course model has many to many relationship with Booking model. Therefore, each course offered on the platform can be booked by multiple users. This reflects the idea that a course can have numerous participants or bookings. Conversely, each booking made by a user can be associated with multiple courses. This means that a user can enroll in or book multiple courses.
+    * Course model has one to many relationship with Comment model. it means that each instance of the "Course" model can have multiple associated instances of the "Comment" model. However, each instance of the "Comment" model is associated with only one specific instance of the "Course" model.
+    * Each course can be booked by maximum 5 users.
 
 ---
 
-3. Cabin Model
-    * A Cabin can have multiple Bookings, but each Booking is associated with only one Cabin. This is represented by the foreign key relationship between Cabin and Booking.
-    * Admin can add cabins through djangos admin panel.
-    * Only Admin can change the data in the backend.
-    * User can see the cabin information and image based on the chosen cabin.
-    * Information provided is price, image, description, number of bedrooms, maximum guests, amenities
-
----
-
-4. Booking Model
+3. Booking Model
     * A User can have multiple Bookings, but each Booking is associated with only one User. This is represented by the foreign key relationship between User and Booking.
-    * Booking model has a feature that prevents overlapping bookings, so users dont book on the same dates
-    * Total price is also calculated in the backend that is then displayed to user to show the total price of the booking, that includes if a user also adds amenities to the booking.
+    * Each user can book maximum 3 courses.
+    * User cannot book a same course several times.
+     
+---
+
+4. Userprofile Model
+    * A User has one profile page with one to one relationship with User model.
+    * Total price is calculated in the backend that is then displayed to user to show the total price of the booking.
     * Full CRUD functionality is available to the user.
-    * User in order to book has to fill check-in, check-out dates, number of guests and optional amenities
-    ---
+     
+---
 
-### User Journey
-
-![User Journey](documentation/readme_images/user-journey.PNG)
+4. Comment Model
+    * Each user can comment on multiple courses, but each Comment is associated with only one User. This is represented by the foreign key relationship between User and Comment.
 
 ### Database Scheme
 
 Entity Relationship Diagram (ERD)
 
-![DataScheme](documentation/readme_images/data-scheme.PNG)
+![DataScheme](/Erd/erd_1.png)
 
-* The Amenity entity represents amenities that can be associated with cabins, with fields id as the primary key, name for the amenity's name, and price for the amenity's price.
-* The Cabin entity represents individual cabin listings, with fields id as the primary key, name for the cabin's name, description for the cabin's description, price for the cabin's price, image for the cabin's image, max_guests for the maximum number of guests allowed, and bedrooms for the number of bedrooms in the cabin.
-* The Booking entity represents a booking made by a user for a specific cabin, with fields id as the primary key, cabin_id as a foreign key referencing the Cabin entity, user_id as a foreign key referencing the User entity, check_in_date for the booking's check-in date, check_out_date for the booking's check-out date, num_guests for the number of guests in the booking, cave_exploration_tickets for the optional quantity of cave exploration tickets, kayak_rentals for the optional quantity of kayak rentals, and total_price for the total price of the booking.
-
-This data scheme allows for the management of users, amenities, cabins, and bookings. Users can make bookings for specific cabins, and each booking can have associated details such as the check-in and check-out dates, number of guests, and optional extras.
+* The ERD image was created using [Graphviz](https://graphviz.org/), 'django_extensions' app and pydot package. I followed the following steps to create the ERD image:
+  - pip3 install graphviz
+  - pip3 install django-extensions
+  - Go to settings.py > add 'django_extensions', to INSTALLED_APPS
+  - Add the following code
+    GRAPH_MODELS ={
+    'all_applications': True,
+    'graph_models': True,
+     }
+    to settings.py
+  - pip3 install pyparsing pydot
+  - python3 manage.py graph_models -a > erd.dot && python3 manage.py graph_models --pydot -a -g -o erd.png
 
 ## Security Features
 
