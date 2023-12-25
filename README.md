@@ -414,7 +414,7 @@ The test files can be found in [courses folder](https://github.com/teman67/Proje
 ## Fixed bugs
 
 - Error Bad Request (400)
-  * I got Bad request error (400) when I deployed on heroku. After checking different options I figured it out that this error came when I set DEBUG=False in settings.py. Finally the issue was solved when I changed <link rel="stylesheet" href="{% static '/css/style.css' %}" /> to <link rel="stylesheet" href="{% static 'css/style.css' %}" /> (removing / from path of style.css).
+  * I got Bad request error (400) when I deployed on heroku. After checking different options I figured it out that this error came when I set DEBUG=False in settings.py. Finally the issue was solved when I changed '/css/style.css' to 'css/style.css' (removing / from path of style.css).
 
 - When a user try to edit or delete booking of other users by copying the edit/delete URLs and pasting in web browser an error appears 
   * To solve the issue I added "if not request.user.is_authenticated: return redirect('home')" to both edit and delete class in views.py. Therefore, a user will redirect to the home page if he/she trys to edit/delete booking of others.
