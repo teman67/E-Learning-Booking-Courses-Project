@@ -217,13 +217,15 @@ Logo was downloaded from goolge image [Google](https://www.google.com/).
 
 4. Userprofile Model
     * A User has one profile page with one to one relationship with User model.
+    * All booked courses are shown to user.
     * Total price is calculated in the backend that is then displayed to user to show the total price of the booking.
     * Full CRUD functionality is available to the user.
      
 ---
 
-4. Comment Model
+5. Comment Model
     * Each user can comment on multiple courses, but each Comment is associated with only one User. This is represented by the foreign key relationship between User and Comment.
+    * Full CRUD functionality is available to the user.
 
 ### Database Scheme
 
@@ -243,6 +245,20 @@ Entity Relationship Diagram (ERD)
     to settings.py
   - pip3 install pyparsing pydot
   - python3 manage.py graph_models -a > erd.dot && python3 manage.py graph_models --pydot -a -g -o erd.png
+
+* This relationship diagram represents how different models are conneted to each other
+
+## CRUD
+
+CRUD functionality was implemented in both booking courses and commenting where:
+
+- Create: An authenticated user can create a booking or leaving a comment.
+
+- Read: A user can read the course information and comments .
+
+- Update: An authenticated user can edit and update their own booked courses or comments.
+
+- Delete: An authenticated user can delete their own booked courses or comments.
 
 ## Security Features
 
