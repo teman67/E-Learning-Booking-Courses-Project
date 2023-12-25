@@ -165,82 +165,29 @@ Logo was downloaded from goolge image [Google](https://www.google.com/).
 
 ### Wireframes
 
-<details>
-<summary> Home Page
-</summary>
+[Home Page](/readme/Home_page.jpg)
 
-![Home Page](documentation/wireframes/home-page.PNG)
-</details>
+[Home Page after logged in](/readme/Home_page_login.jpg)
 
-<details>
-<summary> Home Page when logged in
-</summary>
+[Course List Page](/readme/Course_list.jpg)
 
-![Home Page when logged in](documentation/wireframes/home-page-logged-in.PNG)
-</details>
+[Login Page](/readme/login.jpg)
 
-<details>
-<summary> Contact Page
-</summary>
+[Logout Page](/readme/logout.jpg)
 
-![Contact Page](documentation/wireframes/contact-page.PNG)
-</details>
+[Registration Page](/readme/registration.jpg)
 
-<details>
-<summary> Cabin Booking Page
-</summary>
+[Course Info Page](/readme/course_info.jpg)
 
-![Cabin Booking Page](documentation/wireframes/cabin-booking-page.PNG)
-</details>
+[Booking Page](/readme/Booking_page.jpg)
 
-<details>
-<summary> Make a Booking Page
-</summary>
+[Edit Booking Page](/readme/Edit.jpg)
 
-![Make a Booking Page](documentation/wireframes/make-a-booking-page.PNG)
-</details>
+[Delete Booking Page](/readme/Delete.jpg)
 
-<details>
-<summary> My Booking Page
-</summary>
+[Profile Page](/readme/Profile.jpg)
 
-![My Booking Page](documentation/wireframes/my-booking-page.PNG)
-</details>
-
-<details>
-<summary> Edit Booking Page
-</summary>
-
-![Edit Booking Page](documentation/wireframes/edit-booking-page.PNG)
-</details>
-
-<details>
-<summary> Delete Booking Page
-</summary>
-
-![Delete Booking Page](documentation/wireframes/delete-booking-page.PNG)
-</details>
-
-<details>
-<summary> User Login Page
-</summary>
-
-![User Login Page](documentation/wireframes/user-login-page.PNG)
-</details>
-
-<details>
-<summary> User Logout Page
-</summary>
-
-![User Logout Page](documentation/wireframes/user-logout-page.PNG)
-</details>
-
-<details>
-<summary> User Sign Up Page
-</summary>
-
-![User Sign Up Page](documentation/wireframes/user-sign-up-page.PNG)
-</details>
+[Search Page](/readme/search.jpg)
 
 ### Data Models
 
