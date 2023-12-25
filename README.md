@@ -13,26 +13,22 @@ Welcome to our E-Learning Booking Courses platform, where knowledge meets conven
 
 * [Project Goals](#project-goals)
 * [Agile Methodology](#agile-methodology)
-* [Target Audience](#target-audience)
 * [First time user](#first-time-user)
 * [Registered user](#registered-user)
 * [Admin user](#admin-user)
 
 ### [Design](#design-1)
 
-* [Color Scheme](#color-scheme)
-* [Cabin Images](#cabin-images)
+* [Course Images and Texts](#Course-Images-and-Texts)
 * [Wireframes](#wireframes)
 * [Data Model](#data-models)
-* [User Journey](#user-journey)
 * [Database Scheme](#database-scheme)
 
-### [Security Features](#security-features-1)
+### [Security Features](#Security-Features)
 
-### [Features](#features-1)
+* [User Authentication](#User-Authentication)
+* [CSRF Protection](#CSRF-Protection)
 
-* [Existing Features](#existing-features)
-* [Features Left to Implement](#features-left-to-implement)
 
 ### [Technologies Used](#technologies-used-1)
 
@@ -48,11 +44,13 @@ Welcome to our E-Learning Booking Courses platform, where knowledge meets conven
 * [Cloudinary](#cloudinary)
 * [Heroku Deployment](#heroku-deployment)
 
-### [Testing](#testing-1)
+### [Testing](#Testing)
 
-### [References](#references-1)
+* [Manual Testing](#Manual-Testing)
+* [Automated Testing](#Automated-Testing)
 
-* [Docs](#docs)
+### [References](#References)
+
 * [Content](#content)
 * [Acknowledgments](#acknowledgments)
 
