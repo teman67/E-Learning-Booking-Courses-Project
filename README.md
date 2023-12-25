@@ -408,6 +408,8 @@ I use TestCase from django.test to test my models.py, views.py, and forms.py. A 
 
 The test files can be found in [courses folder](https://github.com/teman67/Project_4/tree/main/courses) named: "test_models.py test_forms.py test_views.py".
 
+- To run these tests I changed the DATABASES in settings.py to local databases instead of external databases, otherwise the tests could not run due to permission problem.
+- Totally 17 tests ran where I got the following output:  "..........E...F.." which shows 15 tests ran successfully.
 
 ## References
 
