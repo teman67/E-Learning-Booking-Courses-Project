@@ -45,6 +45,8 @@ Book courses and leaving comments (authenticated users only).
 | **"Course Description" page** | While authenticated, click "Book this Course". | User is redirected to booking page. |
 | **"Course Description" page** | While authenticated, leaving comment. | The comment will show on the page. |
 | **"Booking" page** | While authenticated, select courses and enter first and last name, then press "Submit Booking". | The booking successfully message shows and the courses are booked. |
+| **Select more than three courses** | While authenticated, on booking page, try to select 4 or more courses. | Getting an error message: "You can select up to 3 courses." |
+| **Try to book a course which already fully booked** | While authenticated, on booking page, try to book a course which is fully booked. | Getting an error message: "The name of the fully booked courses + already fully booked". |
 
 ### Read
 
@@ -64,6 +66,8 @@ Option to edit existing booked courses and posted comments (authenticated users 
 | :-----: | :---------------------------------:| :------------------------------:|
 | **Edit Bookings** | On profile page, click on edit button. | Users redirect to Edit Booking page. |
 | **Save Changes-Btn** | Edit the booked courses and press save changes button | Redirect to profile page with getting a message that courses updated and see the update list of the courses. |
+| **Try to book a course which is already booked by the user** | While authenticated, on Edit booking page, try to book a course which is booked by the user. | Getting an error message: "You have already booked one or more of the selected courses". |
+| **Try to book 4 or more courses** | While authenticated, on Edit booking page, try to book a course/courses while the user booked 3 courses. | Getting an error message: "You are trying to book more than 3 courses!". |
 | **Edit comments** | On course description page, click on edit button for own comments. | User is redirected to Edit Comment page. |
 | **Save Changes-Btn on Edit Comment page** | Update the text and press save changes button. | Redirect to course description page with updated comment. |
 
