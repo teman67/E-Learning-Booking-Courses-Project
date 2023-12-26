@@ -427,6 +427,7 @@ The test files can be found in [courses folder](https://github.com/teman67/Proje
 
 * All of the course images, prices, and descriptions were taken from [Udemy](www.udemy.com)
 * Logo of the webpage was downloaden from google image.
+* The template for manual testing [TESTING.md](/readme/testing.md) was taken from (https://github.com/Kathrin-ddggxh/woohoo-haiku/blob/main/TESTING.md#liking).
 
 ### Acknowledgments
 
