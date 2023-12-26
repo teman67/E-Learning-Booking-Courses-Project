@@ -419,7 +419,7 @@ The test files can be found in [courses folder](https://github.com/teman67/Proje
 
 ## Unfixed bugs
 
-- In the login page there is link "Forgot your password?" which comes from nowhere! I could not figure it out the source of this link in my login template and I just changed the code so users redirect to 404 Page when they click on "Forgot your password?" link.
+- In the login page there is link "Forgot your password?" which comes from nowhere! I could not figure it out the source of this link in my login template and I just changed the code so users redirect to a customized page shown "Under Constraction" when they click on "Forgot your password?" link.
 
 ## References
 
