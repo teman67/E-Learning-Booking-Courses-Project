@@ -21,8 +21,10 @@ All navigation links, including home icon, can be found in navbar or on small to
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **Home Link Icon** | While not on homepage, click icon. | Icon shrinks and expands. User is redirected back to homepage. |
-| **"Courses" Link** | While not on homepage, click "Courses". | User is redirected back to course list page. |
+| **"Home" Link** | click "Home". | User is redirected back to homepage. |
+| **Logo** | click on logo image. | User is redirected back to homepage. |
+| **"Courses" Link** | click "Courses". | User is redirected back to course list page. |
+| **"Search" Link** | Type for example "python" and press search button. | User is redirected to search results page and show the relevant search for "python". |
 | **"Login" Link** | While not authenticated, click "Login". | User is directed to Login form. |
 | **"Registration" Link** | While not authenticated, click "Sign Up". | User is directed to Sign Up form. |
 | **"Booking" Link** | While authenticated, click "Booking". | Renders list of courses with option to book three courses. |
