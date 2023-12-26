@@ -2,7 +2,7 @@
 
 Welcome to our E-Learning Booking Courses platform, where knowledge meets convenience! Our user-friendly website is your gateway to a world of online learning opportunities tailored to fit your schedule and learning preferences. Explore a diverse range of courses and enhance your skills from the comfort of your own space.
 
-![Home Screen](/readme/home.jpg)
+![Home Screen](/readme/responsive.jpg)
 
 [View E-Learning Booking Courses live website here](https://book-courses-cbaeecdf3d3f.herokuapp.com/)
 - - -
