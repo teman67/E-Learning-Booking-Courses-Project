@@ -13,7 +13,6 @@
   - [Sign Up](#sign-up)
   - [Login](#login)
   - [Logout](#logout)
-  - [Commenting](#commenting)
   - [Social Links](#social-links)
 
 ## Navigation
@@ -36,47 +35,46 @@ The full CRUD functionality is only available to authenticated users.
 
 ### Create
 
-Write and submit a haiku via haiku submit form (authenticated users only).
+Book courses and leaving comments (authenticated users only).
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **Title field** | Select field with placeholder "Enter a title" and start typing. | Placeholder disappears, title shows instead. Typing is disabled after 100 characters. |
-| **Tag drop-down** | Click "Tag your haiku" drop-down menu and select tagname. | Shows all available tag options. Placeholder is not selectable. Selected options displays after closing drop-down. |
-| **Content field** | Select field with placeholder "Write haiku here" and start typing. | Placeholder disappears, written text displays. |
-| **Submit** | After completing haiku form, click submit button. | Alert message informs user of successful submission. User is re-directed to homepage with the newly submitted haiku showing top of the list. |
-| **Incomplete form** | Failing to fill out all form fields, click submit button. | User remains on "Create" page and is prompted to complete missing fields. |
+| **"Learn more & Booking" button** | While on Courses page, click "Learn more & Booking". | User is redirected to course description page. |
+| **"Course Description" page** | While authenticated, click "Book this Course". | User is redirected to booking page. |
+| **"Course Description" page** | While authenticated, leaving comment. | The comment will show on the page. |
+| **"Booking" page** | While authenticated, select courses and enter first and last name, then press "Submit Booking". | The booking successfully message shows and the courses are booked. |
 
 ### Read
 
-Read submitted haikus, including tanka extensions (available to all users).
+Read course information, number of bookings for each course, available for booking, and comments (available to all users).
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **Haiku panel link** | On homepage, click on any haiku panel. | New view opens displaying haiku body, title, author and tagname. |
-| **Tankas** | Scroll down below haiku body. | If available, tanka extensions render below haiku, listing body and author. If no tankas available, generic message dispalys. |
+| **Course List** | On courses page, click on learn more & booking button. | The title, description, and price of the course show to user. |
+| **Hover on Images** | Hover on each Images on courses page. | Display a text that shows the course is available for booking or fully booked. |
+| **Comments** | Go to course description for each courses. | Display the comments of other users with CRUD functionality for authenticated users. |
 
 ### Update
 
-Option to edit existing haikus via haiku detail view (authenticated users only).
+Option to edit existing booked courses and posted comments (authenticated users only).
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **User match** | On homepage, click haiku submitted by different user. | Haiku detail view does not show edit button to ensure users can only update their own haikus. |
-| **Edit-Btn** | From haiku detail view, click edit button below haiku body. Button is only visible after loggin. | Renders haiku edit form with title and content field pre-populated by original post. |
-| **Cancel** | Below edit form, click "Cancel". | User is redirected to homepage with no action taken. |
-| **Submit** | Alter form input according to desired update. Click edit button below form. | Alert message informs user of successful update. User is re-directed to homepage with the newly edited haiku showing top of the list. |
-| **Incomplete form** | Failing to fill out all form fields, click edit button. | User remains on edit form view and is prompted to complete missing fields. |
+| **Edit Bookings** | On profile page, click on edit button. | Users redirect to Edit Booking page. |
+| **Save Changes-Btn** | Edit the booked courses and press save changes button | Redirect to profile page with getting a message that courses updated and see the update list of the courses. |
+| **Edit comments** | On course description page, click on edit button for own comments. | User is redirected to Edit Comment page. |
+| **Save Changes-Btn on Edit Comment page** | Update the text and press save changes button. | Redirect to course description page with updated comment. |
 
 ### Delete
 
-Option to delete existing haikus via haiku detail view (authenticated users only).
+Option to delete existing booked courses and posted comments (authenticated users only).
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **User match** | On homepage, click haiku submitted by different user. | Haiku detail view does not show delete button to ensure users can only delete their own haikus. |
-| **Delete-Btn** | From haiku detail view, click delete button below haiku body. Button is only visible after loggin. | User is directed to delete page which prompts user to confirm delete action. |
-| **Confirm Delete** | On delete page, click "Delete". | Alert message informs user of successful deletion. User is re-directed to homepage, selected haiku has been deleted. |
-| **Cancel** | On delete page, click "Cancel". | User is re-directed to homepage with no delete action taken. |
+| **Edit Bookings** | On profile page, click on delete button. | Users redirect to Delete Booking page. |
+| **Delete-Btn** | Confirm the deletion of the courses | Redirect to profile page with getting a message that courses deleted and see no booked courses. |
+| **Delete comments** | On course description page, click on delete button for own comments. | Confirm deleting of the comment. |
+| **OK-Btn** | Press OK to confirm deleting. | Redirect to course description page with no comment. |
 
 ## Sign Up
 
@@ -84,8 +82,8 @@ Account creation for unauthenticated users.
 
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
-| **Sign Up form** | Go to Sign Up page via nav link | Renders form input fields Username, Email (optional), Password, Password (confirm). |
-| **Submit** | Fill in form fields accordingly. Click "Sign Up". | Self-closing message informs user of successfull account creation, including username. User is re-directed to homepage and navigation shows links for authenticated users. |
+| **Sign Up form** | Go to Registration page via nav link | Renders form input fields Username, Email, Password, Password (confirm). |
+| **Sign UP** | Fill in form fields accordingly. Click "Sign Up". | Self-closing message informs user of successfull account creation, including username. User is re-directed to homepage and navigation shows links for authenticated users. |
 | **Incomplete form** | Failing to fill out all form fields, click "Sign Up". | User remains on Sign Up form view and is prompted to complete missing fields. |
 
 ## Login
@@ -95,7 +93,7 @@ Signing into existing account (authenticated users only).
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
 | **Login form** | Go to Login page via nav link | Renders form input fields Username, Password, Remember me (checkbox). |
-| **Submit** | Fill in form fields accordingly. Click "Sign In". | Self-closing message informs user of successfull login, including username. User is re-directed to homepage and navigation shows links for authenticated users. |
+| **Sign In** | Fill in form fields accordingly. Click "Sign In". | Self-closing message informs user of successfull login, including username. User is re-directed to homepage and navigation shows links for authenticated users. |
 | **Incomplete form** | Failing to fill out all form fields, click "Sign In". | User remains on Sign Up form view and is prompted to complete missing fields. |
 | **Remember me** | When signing in, tick "Remember me". Logout and sign in again. | Login form is pre-populated with username and hidden password. |
 
@@ -106,17 +104,7 @@ Allows user to sign out of existing account (authenticated users only).
 | Feature | Action                             | Expected Result                 |
 | :-----: | :---------------------------------:| :------------------------------:|
 | **Logout form** | When authenticated, go to Logout page via nav link | User is directed to Logout page, asking user to confirm action. |
-| **Sign Out** | On Logout page, click "Sign Out". | Self-closing message informs user of successfull logout. User is re-directed to homepage and navigation shows links for unauthenticated users. |
-
-## Commenting
-
-Option to add a tanka extension to own or other users' haikus (authenticated users only.)
-
-| Feature | Action                             | Expected Result                 |
-| :-----: | :---------------------------------:| :------------------------------:|
-| **Submit tanka** | In haiku detail view, scroll down to tanka instructions and blank textfield input. Write tanka according to instructions. Click "Submit". | At the bottom of page, message informs user that submitted tanka awaits approval. Tanka will not be displayed until site admin has approved it. |
-| **Tanka count** | Find tanka counter on haiku panel, both on homepage and in haiku details. | Number on counter matches all displayed tankas. This does not include tankas that are awaiting approval. |
-| **View tankas** | After submitting tanka, wait for admin approval. | Once admin has approved submission, tanka (including author) can now be read below haiku detail view. |
+| **Sign Out** | On Logout page, click "Sign Out". | User is re-directed to homepage and navigation shows links for unauthenticated users. |
 
 ## Social Links
 
