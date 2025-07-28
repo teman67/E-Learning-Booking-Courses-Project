@@ -7,6 +7,78 @@ from .models import Booking, Course, UserProfile, Comment
 from .forms import CourseForm, BookingForm, CommentForm
 from django.db.models import Count
 from django.db.models import Q
+from django.utils import timezone
+from django.db import connection
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+import uuid
+
+# HEALTH CHECK ENDPOINT - Add this to keep Supabase database active
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def health_check(request):
+    """
+    Enhanced health check endpoint that performs database operations
+    to keep Supabase active and prevent auto-pause
+    """
+    try:
+        # Multiple database operations to ensure activity
+        with connection.cursor() as cursor:
+            # Simple query to test connection
+            cursor.execute("SELECT 1")
+            
+        # Count records to ensure ORM works
+        total_courses = Course.objects.count()
+        total_bookings = Booking.objects.count()
+        total_comments = Comment.objects.count()
+        total_profiles = UserProfile.objects.count()
+        
+        # Get latest records (if any) to test complex queries
+        latest_course = Course.objects.first()
+        latest_booking = Booking.objects.first()
+        
+        # Optional: For POST requests, perform a write operation
+        activity_type = 'read_operation'
+        if request.method == 'POST':
+            # Test write operation by creating and deleting a dummy course
+            # This ensures write access to database
+            dummy_course = Course.objects.create(
+                name='__health_check_dummy__',
+                description='Automated health check - will be deleted',
+                price=0,
+                max_capacity=1
+            )
+            # Immediately delete to avoid clutter
+            dummy_course.delete()
+            activity_type = 'write_operation'
+        
+        return JsonResponse({
+            'status': 'healthy',
+            'timestamp': timezone.now().isoformat(),
+            'database': {
+                'total_courses': total_courses,
+                'total_bookings': total_bookings,
+                'total_comments': total_comments,
+                'total_profiles': total_profiles,
+                'latest_course_date': latest_course.created_at.isoformat() if latest_course and hasattr(latest_course, 'created_at') else None,
+                'latest_booking_date': latest_booking.created_at.isoformat() if latest_booking and hasattr(latest_booking, 'created_at') else None,
+                'activity_type': activity_type
+            },
+            'message': 'Course booking system database is active',
+            'app_info': {
+                'name': 'Course Booking System',
+                'version': '1.0'
+            }
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'status': 'error',
+            'error': str(e),
+            'timestamp': timezone.now().isoformat(),
+            'message': 'Database connection failed'
+        }, status=500)
 
 
 def course_list(request):
