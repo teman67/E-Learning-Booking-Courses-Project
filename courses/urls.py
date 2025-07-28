@@ -5,6 +5,7 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('', index.as_view(),name='home'),
+    path('health/', views.health_check, name='health_check'),
     path('booking/', BookingView.as_view(), name='booking'),
     path('user_profile/', user_profile, name='user_profile'),
     path('courses/', course_list, name='course_list'),
