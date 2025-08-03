@@ -3,9 +3,9 @@ name: Keep Course Booking Database Active
 
 on:
   schedule:
-    # Run every 3 days at different times to avoid patterns
-    - cron: '0 12 */3 * *'  # Every 3 days at 12 PM UTC
-    - cron: '30 18 */3 * *'  # Every 3 days at 6:30 PM UTC (offset)
+    # Run every 5 days at different times to avoid patterns
+    - cron: '0 12 */5 * *'  # Every 5 days at 12 PM UTC
+    - cron: '30 18 */5 * *'  # Every 5 days at 6:30 PM UTC (offset)
   workflow_dispatch: # Allow manual triggering
 
 jobs:
