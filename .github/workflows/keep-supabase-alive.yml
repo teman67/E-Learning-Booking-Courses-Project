@@ -77,7 +77,7 @@ jobs:
       run: |
         echo "📊 === Course Booking System Keep-Alive Summary ==="
         echo "🎯 Database activity completed at $(date -u)"
-        echo "🔄 Next automated ping scheduled in ~3 days"
+        echo "🔄 Next automated ping scheduled in ~5 days"
         echo "💾 Supabase database should remain active"
         echo "📚 Course booking system health check complete"
         echo "=================================================="
