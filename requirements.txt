@@ -13,7 +13,8 @@ gcc7==0.0.7
 graphviz==0.20.1
 gunicorn==21.2.0
 oauthlib==3.2.2
-psycopg2==2.9.9
+#psycopg2==2.9.9
+psycopg[binary]
 pydotplus==2.0.2
 PyJWT==2.8.0
 pyparsing==3.1.1
