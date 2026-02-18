@@ -17,7 +17,7 @@ jobs:
     - name: Wait for random delay
       run: |
         # Add random delay to avoid predictable patterns
-        delay=$((RANDOM % 180 + 30))  # Random delay between 30 seconds - 3 minutes
+        delay=$((RANDOM % 30 + 5))  # Random delay between 30 seconds - 3 minutes
         echo "⏳ Waiting $delay seconds before ping to randomize timing..."
         sleep $delay
     
